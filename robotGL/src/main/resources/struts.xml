@@ -5,6 +5,10 @@
 <struts>
 	<constant name="struts.devMode" value="true"/>
 	<package name="default" namespace="/" extends="struts-default, json-default">
+	
+	<action name="Menu*Action" method="{1}" class="mjuan.actions.MenuAction">
+		<result name="success" type="json"/>
+	</action>
 		
 <!-- 		 ROL -->	
 <!-- 		<action name="Rol*Action" method="{1}" class="com.Sopra.Trabajo.Actions.RolAction"> -->
@@ -38,23 +42,12 @@
 <!-- 		</action> -->
 	
 <!-- 		 Acciones de forward --> 
-<!-- 		<action name="redirect" class="com.Sopra.Trabajo.Actions.RedirectAction"> -->
-<!-- 			<result name="index">index.jsp</result> -->
-<!-- 			<result name="menu">menu.jsp</result> -->
+		<action name="redirect" class="mjuan.actions.RedirectAction">
+			<result name="index">index.jsp</result>
 			
-<!-- 			<result name="newUser">newUser.jsp</result> -->
-<!-- 			<result name="remUser">remUser.jsp</result> -->
-<!-- 			<result name="modUser">modUser.jsp</result> -->
+			<result name="brazo">selectBrazo.jsp</result>
+			<result name="pieza">selectPiezas.jsp</result>
 			
-<!-- 			<result name="newRol">newRol.jsp</result> -->
-<!-- 			<result name="remRol">remRol.jsp</result> -->
-<!-- 			<result name="modRol">modRol.jsp</result> -->
-			
-<!-- 			<result name="newDept">newDept.jsp</result> -->
-<!-- 			<result name="remDept">remDept.jsp</result> -->
-<!-- 			<result name="modDept">modDept.jsp</result> -->
-			
-<!-- 			<result name="exito">exito.jsp</result> -->
-<!-- 		</action> -->
+		</action>
 	</package>
 </struts>
