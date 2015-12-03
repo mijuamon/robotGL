@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-BINGO
+<h1>BINGO</h1>
 </body>
 </html>

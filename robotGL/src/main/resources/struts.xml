@@ -44,7 +44,7 @@
 <!-- 		 Acciones de forward --> 
 		<action name="redirect" class="mjuan.actions.RedirectAction">
 			<result name="index">index.jsp</result>
-			
+				
 			<result name="brazo">selectBrazo.jsp</result>
 			<result name="pieza">selectPiezas.jsp</result>
 			
