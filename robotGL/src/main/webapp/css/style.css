@@ -1,0 +1,14 @@
+body { background-color: #99FFFF; margin: 0px; overflow:hidden;}
+canvas { background-color: green;}
+.banner { position: relative; overflow: auto; }
+.banner li { list-style: none; }
+.banner ul li { float: left; }
+
+.wrapper {
+	width: 25%;
+	margin: 0 auto;
+}
+html
+{
+    overflow: scroll;
+}
