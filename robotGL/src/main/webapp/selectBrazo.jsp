@@ -17,6 +17,10 @@
 		<title>Insert title here</title>
 		<script src= "js/functions.js" ></script>
 		
+		
+		<script src="libs/jquery-2.1.4.min.js"></script>
+		<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
+	
 		<!--Slipry-->
 		<script src="libs/slippry/slippry.min.js"></script>
 		<link rel="stylesheet" href="css/slippry.css">
