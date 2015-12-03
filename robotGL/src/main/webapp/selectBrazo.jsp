@@ -15,19 +15,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Insert title here</title>
-		<script src= "js/functions.js" ></script>
 		
+		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		
+		<script src= "js/functions.js" ></script>		
 		<script src="libs/jquery-2.1.4.min.js"></script>
 		<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
-	
-		<!--Slipry-->
-		<script src="libs/slippry/slippry.min.js"></script>
-		<link rel="stylesheet" href="css/slippry.css">
-		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-	
+	<script src="js/bootstrap.min.js"></script>
 	<script src="libs/threejs/three.min.js"></script>
 	<script src="libs/threejs/OrbitControls.js"></script>
 	<script src="libs/threejs/Coordinates.js"></script>
@@ -35,40 +31,48 @@
 	<script src="libs/threejs/stats.min.js"></script>
 	<script src="js/json.js"></script>
 	
-	<section class="wrapper">
-		<ul id="slider2">
-		<%
-			List lista = picturesDAO.getPicturesPath(Global.PIEZA_TODO);
-			for(int i=0; i<lista.size();i++)
-			{
-				Brazo brazo = (Brazo)lista.get(i);%>
-				<li><img src="<%brazo.getUrl(); %>" />	</li><%
-			}
-		%>
-		</ul>
-	</section>
+	<!-- SLIDER DE IMAGENES -->
+	
+	
+	<div id="Carousel-roboticArm" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#Carousel-roboticArm" data-slide-to="0" class="active"></li>
+			<li data-target="#Carousel-roboticArm" data-slide-to="1"></li>
+			<li data-target="#Carousel-roboticArm" data-slide-to="2"></li>
+		</ol>
+	</div>
+	
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+	  <div class="item active">
+	    <img src="images/1.png" alt="...">
+	    <div class="carousel-caption">
+	      ...
+	    </div>
+	  </div>
+	  <div class="item">
+	    <img src="images/2.png" alt="...">
+	    <div class="carousel-caption">
+	      ...
+	    </div>
+	  </div>
+	  ...
+	</div>
+	
+	<!-- Controls -->
+	  <a class="left carousel-control" href="#Carousel-roboticArm" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Anterior</span>
+	  </a>
+	  <a class="right carousel-control" href="#Carousel-roboticArm" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Siguiente</span>
+	  </a>
+	</div>
 		
 	<h1>BINGO</h1>
 		<script>
-			var slide = $('#slider2').slippry();
-			var app = angular.module('menuAPP', ['ui.bootstrap']);
-				app.controller('mainController', function($scope, $http, $window, $location)
-				{
-						$scope.myInterval = 5000;
-					  $scope.noWrapSlides = false;
-					  var slides = $scope.slides = [];
-					  $scope.addSlide = function() {
-					    var newWidth = 600 + slides.length + 1;
-					    slides.push({
-					      image: '//placekitten.com/' + newWidth + '/300',
-					      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-					        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-					    });
-					  };
-					  for (var i=0; i<4; i++) {
-					    $scope.addSlide();
-					  }
-				});
+			
 		</script>
 	</body>
 </html>
