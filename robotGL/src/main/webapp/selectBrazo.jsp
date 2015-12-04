@@ -28,66 +28,60 @@
 
 	<!-- SLIDER DE IMAGENES -->
 	
-	<div id="container">
+	<div id="container" style="width: 40%; height: 30%" align="center">
 	<!-- Con   class="carousel" no sale error pero no funciona-->
 		<div id="Carousel-roboticArm" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
-				<li data-target="#Carousel-roboticArm" data-slide-to="0" class="active"></li>
-				<li data-target="#Carousel-roboticArm" data-slide-to="1"></li>
-				<li data-target="#Carousel-roboticArm" data-slide-to="2"></li>
-				<li data-target="#Carousel-roboticArm" data-slide-to="3"></li>
-				<li data-target="#Carousel-roboticArm" data-slide-to="4"></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="0" class></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="1" class></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="2" class></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="3" class></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="4" class="active"></li>
 			</ol>
-		</div>
 		
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-		  <div class="item active">
-		    <img src="images/1.png" alt="HOLAAAAA" class=first-slide>
-		    <div class="carousel-caption">
-		     TEXTOOOOOOOOOOOOOOOOOO
-		    </div>
-		  </div>
-		  <div class="item">
-		    <img src="images/2.png" alt="..." class="second-slide">
-		    <div class="carousel-caption">
-		      ...
-		    </div>
-		  </div>
-		  <div class="item">
-		    <img src="images/3.png" alt="..." class="third-slide">
-		    <div class="carousel-caption">
-		      ...
-		    </div>
-		  </div>
-		  <div class="item">
-		    <img src="images/4.png" alt="..." class="img-responsive">
-		    <div class="carousel-caption">
-		      ...
-		    </div>
-		  </div>
+		
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" rol="listbox">
+			  <div class="item">
+			    <img src="images/1.png" alt="HOLAAAAA"  data-holder.renderer="true" class="img-rounded">
+			    <div class="carousel-caption">
+			     TEXTOOOOOOOOOOOOOOOOOO
+			    </div>
+			  </div>
+			  <div class="item">
+			    <img src="images/2.png" alt="..."  data-holder.renderer="true" class="img-rounded">
+			    <div class="carousel-caption">
+			      ...
+			    </div>
+			  </div>
+			  <div class="item">
+			    <img src="images/3.png" alt="..."  data-holder.renderer="true" class="img-rounded">
+			    <div class="carousel-caption">
+			      ...
+			    </div>
+			  </div>
+			  <div class="item active">
+			    <img src="images/4.png" alt="..." data-holder.renderer="true" class="img-rounded">
+			    <div class="carousel-caption">
+			      ...
+			    </div>
+			  </div>
+			</div>
 		</div>
 	</div>
 	
 	<!-- Controls -->
-	  <a class="carousel-control left" href="#Carousel-roboticArm" role="button" data-slide="prev">
+	  <a class="left carousel-control" href="#Carousel-roboticArm" role="button" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 	    <span class="sr-only">Anterior</span>
 	  </a>
-	  <a class="carousel-control right" href="#Carousel-roboticArm" role="button" data-slide="next">
+	  <a class="right carousel-control" href="#Carousel-roboticArm" role="button" data-slide="next">
 	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 	    <span class="sr-only">Siguiente</span>
 	  </a>
 	</div>
 	<script  type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script language="JavaScript" type="text/javascript">
-	  $(document).ready(function(){
-	    $('#Carousel-roboticArm').carousel({
-	      interval: 3000
-	    })
-	  });    
-	</script> 
 		
 	<h1>BINGO</h1>
 		<script>
