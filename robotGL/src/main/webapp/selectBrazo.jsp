@@ -16,63 +16,83 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Insert title here</title>
 		
-		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		
+		<!-- CSS -->
+		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">		
 		<script src= "js/functions.js" ></script>		
-		<script src="libs/jquery-2.1.4.min.js"></script>
+		
+		<!-- FUENTES -->
 		<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
 	</head>
-	<body>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="libs/threejs/three.min.js"></script>
-	<script src="libs/threejs/OrbitControls.js"></script>
-	<script src="libs/threejs/Coordinates.js"></script>
-	<script src="libs/threejs/dat.gui.min.js"></script>
-	<script src="libs/threejs/stats.min.js"></script>
-	<script src="js/json.js"></script>
-	
+	<body>	
+
 	<!-- SLIDER DE IMAGENES -->
 	
-	
-	<div id="Carousel-roboticArm" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#Carousel-roboticArm" data-slide-to="0" class="active"></li>
-			<li data-target="#Carousel-roboticArm" data-slide-to="1"></li>
-			<li data-target="#Carousel-roboticArm" data-slide-to="2"></li>
-		</ol>
-	</div>
-	
-	<!-- Wrapper for slides -->
-	<div class="carousel-inner" role="listbox">
-	  <div class="item active">
-	    <img src="images/1.png" alt="...">
-	    <div class="carousel-caption">
-	      ...
-	    </div>
-	  </div>
-	  <div class="item">
-	    <img src="images/2.png" alt="...">
-	    <div class="carousel-caption">
-	      ...
-	    </div>
-	  </div>
-	  ...
+	<div id="container">
+	<!-- Con   class="carousel" no sale error pero no funciona-->
+		<div id="Carousel-roboticArm" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#Carousel-roboticArm" data-slide-to="0" class="active"></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="1"></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="2"></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="3"></li>
+				<li data-target="#Carousel-roboticArm" data-slide-to="4"></li>
+			</ol>
+		</div>
+		
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+		  <div class="item active">
+		    <img src="images/1.png" alt="HOLAAAAA" class=first-slide>
+		    <div class="carousel-caption">
+		     TEXTOOOOOOOOOOOOOOOOOO
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img src="images/2.png" alt="..." class="second-slide">
+		    <div class="carousel-caption">
+		      ...
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img src="images/3.png" alt="..." class="third-slide">
+		    <div class="carousel-caption">
+		      ...
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img src="images/4.png" alt="..." class="img-responsive">
+		    <div class="carousel-caption">
+		      ...
+		    </div>
+		  </div>
+		</div>
 	</div>
 	
 	<!-- Controls -->
-	  <a class="left carousel-control" href="#Carousel-roboticArm" role="button" data-slide="prev">
+	  <a class="carousel-control left" href="#Carousel-roboticArm" role="button" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 	    <span class="sr-only">Anterior</span>
 	  </a>
-	  <a class="right carousel-control" href="#Carousel-roboticArm" role="button" data-slide="next">
+	  <a class="carousel-control right" href="#Carousel-roboticArm" role="button" data-slide="next">
 	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 	    <span class="sr-only">Siguiente</span>
 	  </a>
 	</div>
+	<script  type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script language="JavaScript" type="text/javascript">
+	  $(document).ready(function(){
+	    $('#Carousel-roboticArm').carousel({
+	      interval: 3000
+	    })
+	  });    
+	</script> 
 		
 	<h1>BINGO</h1>
 		<script>
 			
 		</script>
 	</body>
+	 
 </html>
