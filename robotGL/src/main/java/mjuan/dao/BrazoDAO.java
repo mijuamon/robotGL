@@ -4,35 +4,32 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import mjuan.dao.interfaces.PicturesIDAO;
+import mjuan.dao.interfaces.BrazoIDAO;
 import mjuan.model.Pieza;
 import mjuan.util.Global;
 import mjuan.util.HibernateUtil;
 
-public class PicturesDAO implements PicturesIDAO
+public class BrazoDAO implements BrazoIDAO
 {
-	static PicturesDAO INSTANCE = new PicturesDAO();
+	static BrazoDAO INSTANCE = new BrazoDAO();
 	
-	public static PicturesDAO getInstance(){
+	public static BrazoDAO getInstance(){
 		return INSTANCE;
 	}
 
-	public List getPicturesPath(int PIEZA) 
+	public List getBrazos() 
 	{
 		// TODO Auto-generated method stub
 		List<Pieza> lista;
 		String sql="";
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
 		try
 		{
 			session.beginTransaction();			
-			switch(PIEZA)
-			{
-				case Global.PIEZA_TODO:sql="FROM BRAZO";break;
-				default: sql="FROM PIEZA WHERE tipo_fk="+PIEZA;break;
-			}
 			
-			 return session.createQuery(sql).list();
+			
+			 return session.createQuery("FROM Brazo").list();
 			
 		}
 		catch(Exception e)

@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+
+.carousel-inner{
+  max-height: 400px !important;
+}
+.carousel-inner img {
+  margin: auto;
+  max-height: 400px !important;
+}
