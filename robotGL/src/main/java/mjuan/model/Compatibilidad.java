@@ -1,31 +1,36 @@
 package mjuan.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "COMPATIBILIDAD")
 public class Compatibilidad 
 {
-	private Pieza pieza_1, pieza_2, pieza_3;
+	private Pieza Pieza_Base, Pieza_Ante, Pieza_Mano;
 
-	public Pieza getPieza_1() {
-		return pieza_1;
+	public Pieza getPieza_Base() {
+		return Pieza_Base;
 	}
 
-	public void setPieza_1(Pieza pieza_1) {
-		this.pieza_1 = pieza_1;
+	public void setPieza_Base(Pieza Pieza_Base) {
+		this.Pieza_Base = Pieza_Base;
 	}
 
-	public Pieza getPieza_2() {
-		return pieza_2;
+	public Pieza getPieza_Ante() {
+		return Pieza_Ante;
 	}
 
-	public void setPieza_2(Pieza pieza_2) {
-		this.pieza_2 = pieza_2;
+	public void setPieza_Ante(Pieza Pieza_Ante) {
+		this.Pieza_Ante = Pieza_Ante;
 	}
 
-	public Pieza getPieza_3() {
-		return pieza_3;
+	public Pieza getPieza_Mano() {
+		return Pieza_Mano;
 	}
 
-	public void setPieza_3(Pieza pieza_3) {
-		this.pieza_3 = pieza_3;
+	public void setPieza_Mano(Pieza Pieza_Mano) {
+		this.Pieza_Mano = Pieza_Mano;
 	}
 
 }

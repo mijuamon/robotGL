@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
@@ -37,10 +38,8 @@ public class Brazo
 	@Column(name="IMG")
 	private String img;
 	
-	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name="ROL_PRIV", 
-				joinColumns={@JoinColumn(name="ROL_ID")}, 
-				inverseJoinColumns={@JoinColumn(name="PRIVILEGIO_ID")})
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "PIEZA")
 	private Set<Pieza> piezas;
 	
 	
