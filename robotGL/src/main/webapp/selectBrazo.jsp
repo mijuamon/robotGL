@@ -10,6 +10,7 @@
 
 <%
 	BrazoIDAO brazoDAO = BrazoDAO.getInstance();
+	List<Brazo> brazos = brazoDAO.getBrazos();
 %>
 <html>
 	<head>
@@ -39,19 +40,22 @@
 			<div id="Carousel-roboticArm" class="carousel slide" >
 				<ol class="carousel-indicators">
 					<li data-target="#Carousel-roboticArm" data-slide-to="0" class="active"></li>
-					<li data-target="#Carousel-roboticArm" data-slide-to="1" class></li>
-					<li data-target="#Carousel-roboticArm" data-slide-to="2" class></li>
-					<li data-target="#Carousel-roboticArm" data-slide-to="3" class></li>
-					<li data-target="#Carousel-roboticArm" data-slide-to="4" class></li>
+					<%
+					for(int i=1;i<brazos.size();i++)
+					{
+						%><li data-target="#Carousel-roboticArm" data-slide-to="<%out.println(i); %>" class></li><%
+					}
+					 %>
 				</ol>
 				
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
 				<%
 						boolean activo=true;
-						List<Brazo> brazos = brazoDAO.getBrazos();
+						
 						for(Brazo i: brazos)
 						{
+							String url = i.getImg();
 							if(activo)
 							{
 								activo=false;
@@ -64,7 +68,7 @@
 								<%	
 							}
 							%>
-							<img src="<%i.getImg();%>" alt="IMG-NOT FOUND">
+							<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
 							<div class="carousel-caption">
 								<%i.getDescripcion();%>
 							</div>

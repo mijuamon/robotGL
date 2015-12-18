@@ -1,13 +1,37 @@
 package mjuan.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name = "COMPATIBILIDAD")
-public class Compatibilidad 
+@IdClass(Compatibilidad.class)
+public class Compatibilidad implements java.io.Serializable
 {
-	private Pieza Pieza_Base, Pieza_Ante, Pieza_Mano;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Pieza Pieza_Base;
+	@Id
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Pieza Pieza_Ante;
+	@Id
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Pieza Pieza_Mano;
+	
+	public Compatibilidad(){}	
+	
+	public Compatibilidad(Pieza pieza_Base, Pieza pieza_Ante, Pieza pieza_Mano) {
+		super();
+		this.Pieza_Base = pieza_Base;
+		this.Pieza_Ante = pieza_Ante;
+		this.Pieza_Mano = pieza_Mano;
+	}
 
 	public Pieza getPieza_Base() {
 		return Pieza_Base;

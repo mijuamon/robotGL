@@ -4,11 +4,12 @@
 "http://www.hibernate.org/dtd/hibernate-configuration">
 <hibernate-configuration>
 	 <session-factory>
+	 	  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		  <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		  <property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:xe</property>
 		  <property name="hibernate.connection.username">oracle_robotGL</property>
 		  <property name="hibernate.connection.password">robot</property>
-		  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		  
 		  
 		  <property name="connection.pool_size">1</property>
 		  
@@ -16,10 +17,10 @@
 		  
 		  <property name="show_sql">true</property>
 
-		  <mapping class="com.Sopra.Trabajo.Model.Brazo"></mapping>
-		  <mapping class="com.Sopra.Trabajo.Model.Pieza"></mapping>
-		  <mapping class="com.Sopra.Trabajo.Model.Tipo"></mapping>
-		  <mapping class="com.Sopra.Trabajo.Model.Configuracion"></mapping>
-		  <mapping class="com.Sopra.Trabajo.Model.Compatibilidad"></mapping>
+		  <mapping class="mjuan.model.Brazo"></mapping>
+		  <mapping class="mjuan.model.Pieza"></mapping>
+		  <mapping class="mjuan.model.Tipo"></mapping>
+		  <mapping class="mjuan.model.Configuracion"></mapping>
+		  <mapping class="mjuan.model.Compatibilidad"></mapping>
 	</session-factory>
 </hibernate-configuration>

@@ -1,26 +1,70 @@
 package mjuan.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PIEZA")
 public class Pieza 
 {
-	private int id, brazo_id, tipo,configuracion_id;
-	private String descripcion,url,img,nombre;
-	public int getId() {
-		return id;
+	@Id
+	@Column(name="PIEZA_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")  
+	@SequenceGenerator(name = "generator", sequenceName = "PIE_SEQ", allocationSize=1) 
+	private int pieza_id;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "BRAZO_ID")
+	private Brazo brazo_fk;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "TIPO_ID")
+	private Tipo tipo_fk;
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Configuracion configuracion_fk;
+	private int configuracion_id;
+	
+	@Column(name="DESCRIPCION")
+	private String descripcion;
+	
+	@Column(name="URL")
+	private String url;
+	
+	@Column(name="IMG")
+	private String img;
+	
+	@Column(name="NOMBRE")
+	private String nombre;
+	
+	
+	public int getPieza_id() {
+		return pieza_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPieza_id(int pieza_id) {
+		this.pieza_id = pieza_id;
 	}
-	public int getBrazo_id() {
-		return brazo_id;
+	public Brazo getBrazo_fk() {
+		return brazo_fk;
 	}
-	public void setBrazo_id(int brazo_id) {
-		this.brazo_id = brazo_id;
+	public void setBrazo_fk(Brazo brazo_fk) {
+		this.brazo_fk = brazo_fk;
 	}
-	public int getTipo() {
-		return tipo;
+	public Tipo getTipo_fk() {
+		return tipo_fk;
 	}
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
+	public void setTipo_fk(Tipo tipo_fk) {
+		this.tipo_fk = tipo_fk;
 	}
 	public int getConfiguracion_id() {
 		return configuracion_id;
@@ -52,5 +96,10 @@ public class Pieza
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	public Configuracion getConfiguracion_fk() {
+		return configuracion_fk;
+	}
+	public void setConfiguracion_fk(Configuracion configuracion_fk) {
+		this.configuracion_fk = configuracion_fk;
+	}
 }

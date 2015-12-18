@@ -1,13 +1,67 @@
 package mjuan.model;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CONFIGURACION")
 public class Configuracion 
 {
-	private int id, rot_x, rot_y, rot_z, tras_x, tras_y, tras_z, limit_rot, limit_tras;
+	
+
+	@Id
+	@Column(name="CONFIGURACION_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")  
+	@SequenceGenerator(name = "generator", sequenceName = "CON_SEQ", allocationSize=1) 
+	private int id;
+	
+	@Column(name="ROT_X")
+	private int rot_x;
+	
+	@Column(name="ROT_Y")
+	private int rot_y;
+	
+	@Column(name="ROT_Z")
+	private int rot_z;
+	
+	@Column(name="TRAS_X")
+	private int tras_x;
+	
+	@Column(name="TRAS_Y")
+	private int tras_y;
+	
+	@Column(name="TRAS_Z")
+	private int tras_z;
+	
+	@Column(name="LIMIT_ROT")
+	private int limit_rot;
+	
+	@Column(name="LIMIT_TRAS")
+	private int limit_tras;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Pieza pieza;
+	
+	public Pieza getPieza() {
+		return pieza;
+	}
+
+	public void setPieza(Pieza pieza) {
+		this.pieza = pieza;
+	}
 
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}

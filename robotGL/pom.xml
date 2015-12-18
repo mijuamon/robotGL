@@ -7,11 +7,11 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>robotGL Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
+<dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>	
@@ -43,8 +43,6 @@
 		    <version>2.4.1</version>
 		    <scope>runtime</scope>
 		  </dependency>
-
-
 	
     <dependency>
 		<groupId>org.hibernate</groupId>
@@ -75,11 +73,11 @@
 	<version>20140107</version>
 </dependency>
 
-	
+
 	<dependency>
 		<groupId>com.oracle</groupId>
-		<artifactId>jdbc14</artifactId>
-		<version>14</version>
+		<artifactId>ojdbc6</artifactId>
+		<version>11.2.0</version>
 		<scope>provided</scope>
 	</dependency>
 	
@@ -151,8 +149,15 @@
 		<artifactId>angular-ui-bootstrap</artifactId>
 		<version>0.14.3</version>
 	</dependency>
+	
+	
+	
   </dependencies>
   <build>
     <finalName>robotGL</finalName>
   </build>
 </project>
+
+
+
+

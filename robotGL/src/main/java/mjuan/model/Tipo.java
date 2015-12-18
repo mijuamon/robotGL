@@ -2,17 +2,33 @@ package mjuan.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TIPO")
 public class Tipo 
 {
-	private int id;
+	@Id
+	@Column(name="TIPO_ID")
+	private int tipo_ID;
+	
+	@Column(name="NOMBRE")
 	private String nombre;
+	
+	@OneToMany(cascade=CascadeType.ALL)
 	private Set<Pieza> piezas;
 	
-	public int getId() {
-		return id;
+
+	public int getTipo_ID() {
+		return tipo_ID;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setTipo_ID(int tipo_ID) {
+		this.tipo_ID = tipo_ID;
 	}
 	public String getNombre() {
 		return nombre;
