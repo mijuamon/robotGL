@@ -23,6 +23,13 @@ public class MenuAction implements Action{
 		session.setAttribute("forward","brazo");
 		return SUCCESS;
 	}
+	public String Pieza()
+	{
+		log.info("PIEZA");
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.setAttribute("forward","pieza");
+		return SUCCESS;
+	}
 	
 
 }

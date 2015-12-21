@@ -19,7 +19,7 @@
 			<form id="formBrazo" method="post" action="redirect" >
 				<input type="button" value="Probar un brazo completo" ng-click="brazo_completo()" class="btn btn-primary"/>
 			</form>
-			<form id="formBrazo" method="post" action="redirect" >
+			<form id="formPieza" method="post" action="redirect" >
 				<input type="button" value="Montar un brazo por piezas" ng-click="brazo_piezas()" class="btn btn-info"/>
 			</form>
 		</div>
@@ -40,7 +40,16 @@
 			    		post("formBrazo");
 	    			});
 			    };
-			    $scope.brazo_piezas = function () {};
+			    $scope.brazo_piezas = function () 
+			    {
+			    	$http({
+			    	    method: 'post',
+			    	    url: 'MenuPiezaAction'			    	    
+			    	}).success(function(response)
+	    			{
+			    		post("formPieza");
+	    			});
+			    };
 			
 			});
 			

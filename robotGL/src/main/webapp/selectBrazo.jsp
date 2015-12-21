@@ -19,19 +19,20 @@
 		
 		
 		<!-- CSS -->
-		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">		
+		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/personalStyle.css" rel="stylesheet">		
 		
 		
 		<!-- JS -->
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" ></script>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src= "js/functions.js" ></script>		
 		<script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js" ></script>
 		
-		<!-- FUENTES -->
-		<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
 	</head>
-	<body>	
+	<body ng-app="menuAPP" ng-controller="mainController">	
 
 		<!-- SLIDER DE IMAGENES -->
 		
@@ -80,16 +81,50 @@
 				   	
 		
 				<!-- Controls -->
-				  <a class="left carousel-control" href="#Carousel-roboticArm" role="button" data-slide="prev">
+				  <a ng-non-bindable class="left carousel-control" href="#Carousel-roboticArm" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				    <span class="sr-only">Anterior</span>
 				  </a>
-				  <a class="right carousel-control" href="#Carousel-roboticArm" role="button" data-slide="next">
+				  <a ng-non-bindable class="right carousel-control" href="#Carousel-roboticArm" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Siguiente</span>
 				  </a>
+				  
+				  <input type="hidden" id="sliderValue"/>
 			</div>
 		</div>
+		<script type="text/javascript">
+			$('.carousel').on('slid.bs.carousel', function () 
+					{
+			  			var carouselData = $(this).data('bs.carousel');
+			  			var currentIndex = $('div.active').index() + 1;
+			  			$('#sliderValue').text(currentIndex);			  			
+					});
+		</script>
+		
+		
+		<form id="formShowBrazo" method="post" action="redirect" >
+				<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
+		</form>
+		
+		
+		
+		<script>
+			var app = angular.module('menuAPP', ['ui.bootstrap']);
+			app.controller('mainController', function($scope, $http, $window, $location) {
+			    $scope.show = function() {
+			    	$scope.nSlider =  angular.element( document.querySelector( '#sliderValue' ) );
+			    	$http({
+			    	    method: 'post',
+			    	    url: 'showBrazo',
+			    	    params: {  nSlider: $scope.nSlider  }
+			    	}).success(function(response)
+	    			{
+			    		post("formShowBrazo");
+	    			});
+			    };		
+			});		
+		</script>	
 	
 	</body>
 	 

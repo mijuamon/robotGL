@@ -7,12 +7,11 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<script src="libs/threejs/three.min.js"></script>
-		<script src="libs/threejs/OrbitControls.js"></script>
-		<script src="libs/threejs/Coordinates.js"></script>
-		<script src="libs/threejs/dat.gui.min.js"></script>
-		<script src="libs/threejs/stats.min.js"></script>
-		<script src="js/json.js"></script>
+		<script src="lib/threejs/three.min.js"></script>
+		<script src="lib/threejs/OrbitControls.js"></script>
+		<script src="lib/threejs/dat.gui.min.js"></script>
+		<script src="lib/threejs/stats.min.js"></script>
+		<script src="js/webGL.js"></script>
 		BINGO BRAZO
 		<div id='container' width=800, height=600>	
 	</body>

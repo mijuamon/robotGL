@@ -9,6 +9,14 @@
 	<action name="Menu*Action" method="{1}" class="mjuan.actions.MenuAction">
 		<result name="success" type="json"/>
 	</action>
+	
+	<action name="showBrazo" class="mjuan.actions.BrazoAction">
+		<result name="success" type="json"></result>
+	</action>
+	
+	<action name="showPieza" class="mjuan.actions.PiezaAction">
+		<result name="success" type="json"></result>
+	</action>
 		
 <!-- 		 ROL -->	
 <!-- 		<action name="Rol*Action" method="{1}" class="com.Sopra.Trabajo.Actions.RolAction"> -->
@@ -47,6 +55,7 @@
 				
 			<result name="brazo">selectBrazo.jsp</result>
 			<result name="pieza">selectPiezas.jsp</result>
+			<result name="sBrazo">showBrazo.jsp</result>
 			
 		</action>
 	</package>
