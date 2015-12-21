@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<script src="lib/threejs/three.min.js"></script>
+	<script src="lib/threejs/OrbitControls.js"></script>
+	<script src="lib/threejs/dat.gui.min.js"></script>
+	<script src="lib/threejs/stats.min.js"></script>
+	<script src="js/webGL.js"></script>
 BINGO PIEZAS
 </body>
 </html>
