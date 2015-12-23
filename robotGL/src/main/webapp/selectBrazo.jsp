@@ -89,8 +89,8 @@
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Siguiente</span>
 				  </a>
-				  
-				  <input type="hidden" id="sliderValue"/>
+				  request.getParameter("myText");
+				  <input type="hidden" id="sliderValue" name ="sliderValue">			
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -98,7 +98,8 @@
 					{
 			  			var carouselData = $(this).data('bs.carousel');
 			  			var currentIndex = $('div.active').index() + 1;
-			  			$('#sliderValue').text(currentIndex);			  			
+			  			$('#sliderValue').text(currentIndex);		
+			  			
 					});
 		</script>
 		
@@ -113,16 +114,28 @@
 			var app = angular.module('menuAPP', ['ui.bootstrap']);
 			app.controller('mainController', function($scope, $http, $window, $location) {
 			    $scope.show = function() {
-			    	$scope.nSlider =  angular.element( document.querySelector( '#sliderValue' ) );
+			    	var nSlider = document.getElementsByName('sliderValue'[0]).value;
+			    	//var activeSlides = $scope.slides.filter(isActive)[0]; 
+			    	
+			    	$scope.currentIndex = $window.currentIndex;
+			    	//var nSlider =  $document.find( '#sliderValue');
 			    	$http({
 			    	    method: 'post',
 			    	    url: 'showBrazo',
-			    	    params: {  nSlider: $scope.nSlider  }
+			    	   // data: 'nSlider='+nSlider
+ 			    	    params: {  nSlider: $scope.currentIndex  }
 			    	}).success(function(response)
 	    			{
 			    		post("formShowBrazo");
 	    			});
 			    };		
+			    
+			    function isActive(slide) {
+			    	  return slide.active;
+		    	};
+		    	
+		    	  
+		    
 			});		
 		</script>	
 	

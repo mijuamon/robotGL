@@ -22,7 +22,7 @@ function init()
 	renderer = new THREE.WebGLRenderer({antialias: true});
 	renderer.setSize(width,height);	
 	renderer.setClearColor(new THREE.Color(0x0000AA),1.0);
-	document.getElementById('container').appendChild(renderer.domElement);
+	document.getElementById('#container').appendChild(renderer.domElement);
 	
 	scene =new THREE.Scene();
 	var aspectRatio = window.innerWidth/window.innerHeight;

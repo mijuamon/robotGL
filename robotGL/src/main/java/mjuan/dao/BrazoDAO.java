@@ -27,7 +27,7 @@ public class BrazoDAO implements BrazoIDAO
 		try
 		{
 			session.beginTransaction();	
-			return session.createQuery("FROM Brazo").list();
+			return session.createQuery("FROM Brazo b ORDER BY b.brazo_id").list();
 			
 		}
 		catch(Exception e)
