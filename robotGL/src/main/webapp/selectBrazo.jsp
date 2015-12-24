@@ -90,7 +90,8 @@
 				    <span class="sr-only">Siguiente</span>
 				  </a>
 				  request.getParameter("myText");
-				  <input type="hidden" id="sliderValue" name ="sliderValue">			
+				  <!-- <input type="hidden" id="sliderValue" name ="sliderValue"> -->
+				  <s:hidden name="nSlider" id="sliderValue"/>			
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -98,7 +99,7 @@
 					{
 			  			var carouselData = $(this).data('bs.carousel');
 			  			var currentIndex = $('div.active').index() + 1;
-			  			$('#sliderValue').text(currentIndex);		
+			  			$('#sliderValue').text(currentIndex);			  			
 			  			
 					});
 		</script>
@@ -123,6 +124,7 @@
 			    	    method: 'post',
 			    	    url: 'showBrazo',
 			    	   // data: 'nSlider='+nSlider
+			    	   contentType: 'application/json',
  			    	    params: {  nSlider: $scope.currentIndex  }
 			    	}).success(function(response)
 	    			{
