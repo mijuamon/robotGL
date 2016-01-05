@@ -3,17 +3,14 @@
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-configuration">
 <hibernate-configuration>
-	 <session-factory>
-	 	  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+	 <session-factory>	 	  
 		  <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		  <property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:xe</property>
 		  <property name="hibernate.connection.username">oracle_robotGL</property>
 		  <property name="hibernate.connection.password">robot</property>
-		  
-		  
-		  <property name="connection.pool_size">1</property>
-		  
-		  <property name="hibernate.current_session_context_class">thread</property>
+		  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+		  <property name="current_session_context_class">thread</property>
 		  
 		  <property name="show_sql">true</property>
 
