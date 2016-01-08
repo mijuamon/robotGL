@@ -1,36 +1,35 @@
 package mjuan.actions;
 
 
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
-import org.hibernate.Session;
-
 
 import com.opensymphony.xwork2.Action;
 
 public class BrazoAction implements Action 
 {
 	private static final Logger log = LogManager.getLogger(BrazoAction.class);
-	private int nSlider;
+	private String NSlider;
 	
 	public String execute() throws Exception {
 		
 		HttpSession session = ServletActionContext.getRequest().getSession();
+		
 		session.setAttribute("forward","sBrazo");
-		session.setAttribute("id_brazo", nSlider);
+		
+		String nslider = NSlider.split(":")[1];
+		session.setAttribute("id_brazo", nslider);
 		return SUCCESS;
 	}
 	
-	public int getnSlider() {
-		return nSlider;
+	public String getNSlider() {
+		return NSlider;
 	}
 
-	public void setnSlider(int nSlider) {
-		this.nSlider = nSlider;
+	public void setNSlider(String NSlider) {
+		this.NSlider = NSlider;
 	}
-
 }

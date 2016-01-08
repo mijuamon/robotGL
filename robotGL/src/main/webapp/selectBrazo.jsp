@@ -71,7 +71,8 @@
 							%>
 							<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
 							<div class="carousel-caption">
-								<%i.getDescripcion();%>
+								<h3><%out.println(i.getNombre());%></h3>
+								<p><%out.println(i.getDescripcion());%></p>
 							</div>
 				 			</div><%
 						}
@@ -88,21 +89,12 @@
 				  <a ng-non-bindable class="right carousel-control" href="#Carousel-roboticArm" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Siguiente</span>
-				  </a>
-				  request.getParameter("myText");
-				  <!-- <input type="hidden" id="sliderValue" name ="sliderValue"> -->
-				  <s:hidden name="nSlider" id="sliderValue"/>			
+				  </a>				  
+				  <input type="hidden" id="sliderValue" name ="sliderValue" value={{}}>
+<!-- 				  <s:hidden name="nSlider" id="sliderValue" ng-hide="hideError"/>			 -->
 			</div>
 		</div>
-		<script type="text/javascript">
-			$('.carousel').on('slid.bs.carousel', function () 
-					{
-			  			var carouselData = $(this).data('bs.carousel');
-			  			var currentIndex = $('div.active').index() + 1;
-			  			$('#sliderValue').text(currentIndex);			  			
-			  			
-					});
-		</script>
+	
 		
 		
 		<form id="formShowBrazo" method="post" action="redirect" >
@@ -114,18 +106,20 @@
 		<script>
 			var app = angular.module('menuAPP', ['ui.bootstrap']);
 			app.controller('mainController', function($scope, $http, $window, $location) {
+				$scope.hideError=true;
 			    $scope.show = function() {
-			    	var nSlider = document.getElementsByName('sliderValue'[0]).value;
-			    	//var activeSlides = $scope.slides.filter(isActive)[0]; 
-			    	
-			    	$scope.currentIndex = $window.currentIndex;
-			    	//var nSlider =  $document.find( '#sliderValue');
+			    				    	
+			    		    	
+		  			$scope.currentIndex = $('div.active').index() + 1;//Saca el indice actual del carousel
+		  			var params = "NSlider :"+$scope.currentIndex;
+		  			var data = angular.toJson(params)
 			    	$http({
-			    	    method: 'post',
-			    	    url: 'showBrazo',
-			    	   // data: 'nSlider='+nSlider
-			    	   contentType: 'application/json',
- 			    	    params: {  nSlider: $scope.currentIndex  }
+			    	    method: 'POST',
+			    	    url: 'showBrazo',			    	    			    	   		    	  
+ 			    	    data: 'NSlider=' + data,
+ 			    	    headers : {
+ 			                'Content-Type' : 'application/x-www-form-urlencoded'
+ 			            }
 			    	}).success(function(response)
 	    			{
 			    		post("formShowBrazo");
