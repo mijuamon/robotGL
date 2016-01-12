@@ -24,16 +24,17 @@ public class Pieza
 	private int pieza_id;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "BRAZO_ID")
+	@JoinColumn(name = "BRAZO_FK")
 	private Brazo brazo_fk;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "TIPO_ID")
+	@JoinColumn(name = "TIPO_FK")
 	private Tipo tipo_fk;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Configuracion configuracion_fk;
-	private int configuracion_id;
+	@JoinColumn(name = "CONF_FK")
+	private Configuracion conf_fk;
+	
 	
 	@Column(name="DESCRIPCION")
 	private String descripcion;
@@ -66,12 +67,6 @@ public class Pieza
 	public void setTipo_fk(Tipo tipo_fk) {
 		this.tipo_fk = tipo_fk;
 	}
-	public int getConfiguracion_id() {
-		return configuracion_id;
-	}
-	public void setConfiguracion_id(int configuracion_id) {
-		this.configuracion_id = configuracion_id;
-	}
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -96,10 +91,10 @@ public class Pieza
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Configuracion getConfiguracion_fk() {
-		return configuracion_fk;
+	public Configuracion getConf_fk() {
+		return conf_fk;
 	}
-	public void setConfiguracion_fk(Configuracion configuracion_fk) {
-		this.configuracion_fk = configuracion_fk;
+	public void setConf_fk(Configuracion conf_fk) {
+		this.conf_fk = conf_fk;
 	}
 }

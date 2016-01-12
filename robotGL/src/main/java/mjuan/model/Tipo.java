@@ -5,8 +5,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,11 +21,7 @@ public class Tipo
 	private int tipo_ID;
 	
 	@Column(name="NOMBRE")
-	private String nombre;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	private Set<Pieza> piezas;
-	
+	private String nombre;	
 
 	public int getTipo_ID() {
 		return tipo_ID;
@@ -35,11 +34,5 @@ public class Tipo
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public Set<Pieza> getPiezas() {
-		return piezas;
-	}
-	public void setPiezas(Set<Pieza> piezas) {
-		this.piezas = piezas;
 	}
 }

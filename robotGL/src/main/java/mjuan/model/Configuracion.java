@@ -18,7 +18,7 @@ public class Configuracion
 	
 
 	@Id
-	@Column(name="CONFIGURACION_ID")
+	@Column(name="CONF_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")  
 	@SequenceGenerator(name = "generator", sequenceName = "CON_SEQ", allocationSize=1) 
 	private int id;
