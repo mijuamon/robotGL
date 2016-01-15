@@ -9,15 +9,16 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>RobotGL - Mostrar brazo</title>
 	</head>
-	<body>
+	<body onload="init();">
 		<script src="lib/threejs/three.min.js"></script>
 		<script src="lib/threejs/OrbitControls.js"></script>
 		<script src="lib/threejs/dat.gui.min.js"></script>
 		<script src="lib/threejs/stats.min.js"></script>
 		<script src="js/webGL.js"></script>
 		BINGO BRAZO 
-		<%
-			out.println(session.getAttribute("id_brazo"));
+		<%	
+			int id = Integer.parseInt((String)session.getAttribute("id_brazo"));
+			out.println(id);	
 		%>
 		<div id='container' width=800, height=600>	
 	</body>

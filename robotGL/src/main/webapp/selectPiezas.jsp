@@ -65,23 +65,29 @@
 							if(activo)
 							{
 								activo=false;
-								%><div class="item active"><%
+								%>
+								<div class="item active" id="base">
+								<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
+								<div class="carousel-caption">
+									<h3><%out.println(i.getNombre());%></h3>
+									<p><%out.println(i.getDescripcion());%></p>
+								</div>
+					 			</div>
+								<%
 							}
 							else
 							{
 								%>
-								<div class="item">
+								<div class="item" id="base">
+								<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
+								<div class="carousel-caption">
+									<h3><%out.println(i.getNombre());%></h3>
+									<p><%out.println(i.getDescripcion());%></p>
+								</div>
+					 			</div>
 								<%	
-							}
-							%>
-							<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
-							<div class="carousel-caption">
-								<h3><%out.println(i.getNombre());%></h3>
-								<p><%out.println(i.getDescripcion());%></p>
-							</div>
-				 			</div><%
-						}
-						
+							}							
+						}						
 				%>
 				</div>		    
 				   	
@@ -127,27 +133,33 @@
 							if(activo)
 							{
 								activo=false;
-								%><div class="item active"><%
+								%>
+								<div class="item active" id="ante">
+								<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
+								<div class="carousel-caption">
+									<h3><%out.println(i.getNombre());%></h3>
+									<p><%out.println(i.getDescripcion());%></p>
+								</div>
+					 			</div>
+								<%
 							}
 							else
 							{
 								%>
-								<div class="item">
+								<div class="item" id="ante">
+								<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
+								<div class="carousel-caption">
+									<h3><%out.println(i.getNombre());%></h3>
+									<p><%out.println(i.getDescripcion());%></p>
+								</div>
+					 			</div>
 								<%	
-							}
-							%>
-							<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
-							<div class="carousel-caption">
-								<h3><%out.println(i.getNombre());%></h3>
-								<p><%out.println(i.getDescripcion());%></p>
-							</div>
-				 			</div><%
+							}						
 						}
 						
 				%>
-				</div>		    
-				   	
-		
+				</div>
+						
 				<!-- Controls -->
 				  <a ng-non-bindable class="left carousel-control" href="#Carousel-roboticArmA" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -188,23 +200,29 @@
 							if(activo)
 							{
 								activo=false;
-								%><div class="item active"><%
+								%>
+								<div class="item active" id="mano">
+								<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
+								<div class="carousel-caption">
+									<h3><%out.println(i.getNombre());%></h3>
+									<p><%out.println(i.getDescripcion());%></p>
+								</div>
+					 			</div>
+								<%
 							}
 							else
 							{
 								%>
-								<div class="item">
+								<div class="item" id="mano">
+								<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
+								<div class="carousel-caption">
+									<h3><%out.println(i.getNombre());%></h3>
+									<p><%out.println(i.getDescripcion());%></p>
+								</div>
+					 			</div>
 								<%	
-							}
-							%>
-							<img src="<%out.println(url);%>" alt="IMG-NOT FOUND">
-							<div class="carousel-caption">
-								<h3><%out.println(i.getNombre());%></h3>
-								<p><%out.println(i.getDescripcion());%></p>
-							</div>
-				 			</div><%
-						}
-						
+							}							
+						}						
 				%>
 				</div>		    
 			  	<hr> 	
@@ -221,18 +239,10 @@
 				  <input type="hidden" id="sliderValue" name ="sliderValue" value={{}}>
 			</div>
 		</div>
-		
-		
-		
-	
-		
 		<!-- ------------------------------------------------------ -->
 		<form id="formShowBrazo" method="post" action="redirect" >
 				<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
 		</form>
-		
-		
-		
 		<script>
 			var app = angular.module('menuAPP', ['ui.bootstrap']);
 			app.controller('mainController', function($scope, $http, $window, $location) {
@@ -240,13 +250,15 @@
 			    $scope.show = function() {
 			    				    	
 			    		    	
-		  			$scope.currentIndex = $('div.active').index() + 1;//Saca el indice actual del carousel
-		  			var params = "NSlider :"+$scope.currentIndex;
+		  			$scope.currentBaseIndex = $("#brazo, div.active").index() + 1;//Saca el indice actual del carousel
+		  			$scope.currentAnteIndex = $("#antebrazo, div.active").index() + 1;//Saca el indice actual del carousel
+		  			$scope.currentManoIndex = $("#mano, div.active").index() + 1;//Saca el indice actual del carousel
+		  			var params = "Data :"+$scope.currentBaseIndex+":"+$scope.currentAnteIndex+":"+$scope.currentManoIndex;
 		  			var data = angular.toJson(params)
 			    	$http({
 			    	    method: 'POST',
-			    	    url: 'showBrazo',			    	    			    	   		    	  
- 			    	    data: 'NSlider=' + data,
+			    	    url: 'showPieza',			    	    			    	   		    	  
+ 			    	    data: 'Data=' + data,
  			    	    headers : {
  			                'Content-Type' : 'application/x-www-form-urlencoded'
  			            }
@@ -263,8 +275,6 @@
 		    	  
 		    
 			});		
-		</script>
-	
-	
+		</script>	
 	</body>
 </html>

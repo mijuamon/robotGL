@@ -60,12 +60,12 @@
 							if(activo)
 							{
 								activo=false;
-								%><div class="item active"><%
+								%><div class="item active" id="base"><%
 							}
 							else
 							{
 								%>
-								<div class="item">
+								<div class="item" id="base">
 								<%	
 							}
 							%>
@@ -110,7 +110,7 @@
 			    $scope.show = function() {
 			    				    	
 			    		    	
-		  			$scope.currentIndex = $('div.active').index() + 1;//Saca el indice actual del carousel
+		  			$scope.currentIndex = $("#brazo, div.active").index() + 1;//Saca el indice actual del carousel
 		  			var params = "NSlider :"+$scope.currentIndex;
 		  			var data = angular.toJson(params)
 			    	$http({

@@ -11,8 +11,8 @@ var width = window.innerWitdh,
 	cameraConmtrols,
 	URL;
 
-	init();
-	animate();	
+	//init();
+	//animate();	
 
 
 function init()
@@ -54,7 +54,7 @@ function init()
 	cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
 	cameraControls.target.set(0,0,0);
 	window.addEventListener('resize',updateAspectRatio);
-	
+	animate();	
 	
 }
 

@@ -21,7 +21,7 @@ public class BrazoAction implements Action
 		session.setAttribute("forward","sBrazo");
 		
 		String nslider = NSlider.split(":")[1];
-		session.setAttribute("id_brazo", nslider);
+		session.setAttribute("id_brazo", nslider.substring(0, nslider.length()-1));
 		return SUCCESS;
 	}
 	
