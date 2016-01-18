@@ -11,18 +11,43 @@ var width = window.innerWitdh,
 	cameraConmtrols,
 	URL;
 
-	//init();
-	//animate();	
+	init();
+	animate();	
 
+	if (!window.console) (function() {
+
+	    var __console, Console;
+
+	    Console = function() {
+	        var check = setInterval(function() {
+	            var f;
+	            if (window.console && console.log && !console.__buffer) {
+	                clearInterval(check);
+	                f = (Function.prototype.bind) ? Function.prototype.bind.call(console.log, console) : console.log;
+	                for (var i = 0; i < __console.__buffer.length; i++) f.apply(console, __console.__buffer[i]);
+	            }
+	        }, 1000); 
+
+	        function log() {
+	            this.__buffer.push(arguments);
+	        }
+
+	        this.log = log;
+	        this.error = log;
+	        this.warn = log;
+	        this.info = log;
+	        this.__buffer = [];
+	    };
+
+	    __console = window.console = new Console();
+	})();
 
 function init()
 {
-	
-
 	renderer = new THREE.WebGLRenderer({antialias: true});
 	renderer.setSize(width,height);	
 	renderer.setClearColor(new THREE.Color(0x0000AA),1.0);
-	document.getElementById('#container').appendChild(renderer.domElement);
+	document.getElementById('container').appendChild(renderer.domElement);
 	
 	scene =new THREE.Scene();
 	var aspectRatio = window.innerWidth/window.innerHeight;
@@ -54,7 +79,6 @@ function init()
 	cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
 	cameraControls.target.set(0,0,0);
 	window.addEventListener('resize',updateAspectRatio);
-	animate();	
 	
 }
 
@@ -89,8 +113,8 @@ function setURL(url)
 		
 		//Cargamos el archivo de configuracion del modelo
 		//------------------------------------
-	
-		$.get(url+'/config.cfg', function(result) 
+		var client = new XMLHttpRequest();
+		client.get(url+'/config.cfg', function(result) 
 		{
 			var txt=result.split('\n');
 			var pos=txt[2].split(':')[1].split(',');

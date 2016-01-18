@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import mjuan.dao.interfaces.BrazoIDAO;
+import mjuan.model.Brazo;
 import mjuan.util.HibernateUtil;
 
 public class BrazoDAO implements BrazoIDAO
@@ -30,5 +31,23 @@ public class BrazoDAO implements BrazoIDAO
 			session.getTransaction().rollback();
 			return null;
 		}		
+	}
+
+	public Brazo getBrazo(int id) 
+	{
+Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
+		try
+		{
+			session.beginTransaction();	
+			return (Brazo) session.createQuery("FROM Brazo b WHERE b.brazo_id="+id).list().get(0);
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			return null;
+		}	
 	}
 }
