@@ -3,6 +3,8 @@
 <%@page import="mjuan.model.Brazo"%>
 <%@page import="mjuan.dao.BrazoDAO"%>
 <%@page import="mjuan.dao.interfaces.BrazoIDAO"%>
+<%@page import="mjuan.model.Pieza"%>
+<%@page import="java.util.List"%>
 
 
 <%
@@ -31,9 +33,20 @@
 		<script type="text/javascript">
 			<%
 				Brazo brazo = brazoDAO.getBrazo(id);
-				String url=brazo.getUrl();
+				
+				List<Pieza> piezas = brazo.getPiezas();
+				
+				int i=0;
+				while(i<piezas.size())
+				{
+					String url=piezas.get(i).getUrl();
+					String conf=piezas.get(i).getConf_fk().toString();
 			%>
-			setURL('<%=url%>');
+			setURL('<%=url%>','<%=conf%>');
+			<%
+					i++;
+				}
+			%>
  		</script>
 		
 	</body>

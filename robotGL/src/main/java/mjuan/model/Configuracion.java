@@ -32,23 +32,56 @@ public class Configuracion
 	@Column(name="ROT_Z")
 	private int rot_z;
 	
-	@Column(name="TRAS_X")
-	private int tras_x;
+	@Column(name="ESC_X")
+	private int esc_x;
 	
-	@Column(name="TRAS_Y")
-	private int tras_y;
+	@Column(name="ESC_Y")
+	private int esc_y;
 	
-	@Column(name="TRAS_Z")
-	private int tras_z;
+	@Column(name="ESC_Z")
+	private int esc_z;
 	
 	@Column(name="LIMIT_ROT")
 	private int limit_rot;
 	
 	@Column(name="LIMIT_TRAS")
-	private int limit_tras;
+	private int limit_pos;
+	
+	@Column(name="POS_X")
+	private int pos_x;
+	
+	@Column(name="POS_Y")
+	private int pos_y;
+	
+	@Column(name="POS_Z")
+	private int pos_z;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Pieza pieza;
+	
+	public int getPos_x() {
+		return pos_x;
+	}
+
+	public void setPos_x(int pos_x) {
+		this.pos_x = pos_x;
+	}
+
+	public int getPos_y() {
+		return pos_y;
+	}
+
+	public void setPos_y(int pos_y) {
+		this.pos_y = pos_y;
+	}
+
+	public int getPos_z() {
+		return pos_z;
+	}
+
+	public void setPos_z(int pos_z) {
+		this.pos_z = pos_z;
+	}
 	
 	public Pieza getPieza() {
 		return pieza;
@@ -90,28 +123,28 @@ public class Configuracion
 		this.rot_z = rot_z;
 	}
 
-	public int getTras_x() {
-		return tras_x;
+	public int getEsc_x() {
+		return esc_x;
 	}
 
-	public void setTras_x(int tras_x) {
-		this.tras_x = tras_x;
+	public void setEsc_x(int esc_x) {
+		this.esc_x = esc_x;
 	}
 
-	public int getTras_y() {
-		return tras_y;
+	public int getEsc_y() {
+		return esc_y;
 	}
 
-	public void setTras_y(int tras_y) {
-		this.tras_y = tras_y;
+	public void setEsc_y(int esc_y) {
+		this.esc_y = esc_y;
 	}
 
-	public int getTras_z() {
-		return tras_z;
+	public int getEsc_z() {
+		return esc_z;
 	}
 
-	public void setTras_z(int tras_z) {
-		this.tras_z = tras_z;
+	public void setEsc_z(int esc_z) {
+		this.esc_z = esc_z;
 	}
 
 	public int getLimit_rot() {
@@ -122,12 +155,22 @@ public class Configuracion
 		this.limit_rot = limit_rot;
 	}
 
-	public int getLimit_tras() {
-		return limit_tras;
+	public int getLimit_pos() {
+		return limit_pos;
 	}
 
-	public void setLimit_tras(int limit_tras) {
-		this.limit_tras = limit_tras;
+	public void setLimit_pos(int limit_pos) {
+		this.limit_pos = limit_pos;
 	}
 
+	public String toString() 
+	{
+		// TODO Auto-generated method stub	
+		String txt="";
+		txt="pos:"+getPos_x()+","+getPos_y()+","+getPos_z()+"\n";
+		txt=txt+"rot:"+getRot_x()+","+getRot_y()+","+getRot_z()+"\n";
+		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+"\n";
+		
+		return txt;
+	}
 }

@@ -1,8 +1,6 @@
 package mjuan.model;
 
-import java.util.Set;
-
-
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,13 +36,13 @@ public class Brazo
 	private String img;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private Set<Pieza> piezas;
+	private List<Pieza> piezas;
 	
 	
-	public Set<Pieza> getPiezas() {
+	public List<Pieza> getPiezas() {
 		return piezas;
 	}
-	public void setPiezas(Set<Pieza> piezas) {
+	public void setPiezas(List<Pieza> piezas) {
 		this.piezas = piezas;
 	}
 	public int getId() {

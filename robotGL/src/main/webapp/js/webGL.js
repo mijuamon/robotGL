@@ -100,7 +100,7 @@ function animate() {
     renderer.render( scene, camera );
 }
 
-function setURL(url)
+function setURL(url, conf)
 {
 	//window.stop()
 	URL = url+'/model.json';	
@@ -114,17 +114,19 @@ function setURL(url)
 		//Cargamos el archivo de configuracion del modelo
 		//------------------------------------
 		var client = new XMLHttpRequest();
-		client.get(url+'/config.cfg', function(result) 
+		if(conf!="")
 		{
-			var txt=result.split('\n');
-			var pos=txt[2].split(':')[1].split(',');
-			var rot=txt[3].split(':')[1].split(',');			
-			var sca=txt[4].split(':')[1].split(',');
-				
-			modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
-			modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
-		});
-
+			client.get(url+'/config.cfg', function(result) 
+			{
+				var txt=result.split('\n');
+				var pos=txt[0].split(':')[1].split(',');
+				var rot=txt[1].split(':')[1].split(',');			
+				var sca=txt[2].split(':')[1].split(',');
+					
+				modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
+				modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
+			});
+		}
 		//------------------------------------
 	
 		scene.add(modelo);		

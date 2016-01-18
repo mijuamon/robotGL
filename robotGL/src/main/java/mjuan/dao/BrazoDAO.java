@@ -15,6 +15,7 @@ public class BrazoDAO implements BrazoIDAO
 		return INSTANCE;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public List getBrazos() 
 	{		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -35,7 +36,7 @@ public class BrazoDAO implements BrazoIDAO
 
 	public Brazo getBrazo(int id) 
 	{
-Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		try
 		{
