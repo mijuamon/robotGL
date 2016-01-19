@@ -243,16 +243,23 @@
 		<form id="formShowBrazo" method="post" action="redirect" >
 				<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
 		</form>
+
 		<script>
 			var app = angular.module('menuAPP', ['ui.bootstrap']);
 			app.controller('mainController', function($scope, $http, $window, $location) {
 				$scope.hideError=true;
 			    $scope.show = function() {
-			    				    	
-			    		    	
-		  			$scope.currentBaseIndex = $("#brazo, div.active").index() + 1;//Saca el indice actual del carousel
-		  			$scope.currentAnteIndex = $("#antebrazo, div.active").index() + 1;//Saca el indice actual del carousel
-		  			$scope.currentManoIndex = $("#mano, div.active").index() + 1;//Saca el indice actual del carousel
+			    	
+			    	//var targetDiv = document.getElementById("brazo").getElementsByClassName("active")[0];
+			    	//var targetDiv2 = document.getElementById("antebrazo").getElementsByClassName("active")[0];
+			    	//var targetDiv3 = document.getElementById("mano").getElementsByClassName("active")[0];
+			    	
+			    	
+		  			$scope.currentBaseIndex = $("div.active#base").index() + 1;//Saca el indice actual del carousel
+		  			$scope.currentAnteIndex = $("div.active#ante").index() + 1;//Saca el indice actual del carousel
+		  			$scope.currentManoIndex = $("div.active#mano").index() + 1;//Saca el indice actual del carousel
+		  			
+		  			
 		  			var params = "Data :"+$scope.currentBaseIndex+":"+$scope.currentAnteIndex+":"+$scope.currentManoIndex;
 		  			var data = angular.toJson(params)
 			    	$http({
