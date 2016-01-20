@@ -17,6 +17,10 @@
 	<action name="showPieza" class="mjuan.actions.PiezaAction">
 		<result name="success" type="json"></result>
 	</action>
+	
+	<action name="BackMenu" method="back" class="mjuan.actions.RedirectAction">
+		<result name="success" type="json"></result>
+	</action>
 		
 <!-- 		 ROL -->	
 <!-- 		<action name="Rol*Action" method="{1}" class="com.Sopra.Trabajo.Actions.RolAction"> -->

@@ -240,19 +240,17 @@
 			</div>
 		</div>
 		<!-- ------------------------------------------------------ -->
-		<form id="formShowBrazo" method="post" action="redirect" >
-				<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
-		</form>
-
+		<div align="center">
+			<form id="formShowBrazo" method="post" action="redirect" >
+					<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
+					<input type="button" value="Volver atras" ng-click="backMenu()" class="btn btn-warning"/>
+			</form>
+		</div>
 		<script>
 			var app = angular.module('menuAPP', ['ui.bootstrap']);
 			app.controller('mainController', function($scope, $http, $window, $location) {
 				$scope.hideError=true;
 			    $scope.show = function() {
-			    	
-			    	//var targetDiv = document.getElementById("brazo").getElementsByClassName("active")[0];
-			    	//var targetDiv2 = document.getElementById("antebrazo").getElementsByClassName("active")[0];
-			    	//var targetDiv3 = document.getElementById("mano").getElementsByClassName("active")[0];
 			    	
 			    	
 		  			$scope.currentBaseIndex = $("div.active#base").index() + 1;//Saca el indice actual del carousel
@@ -273,8 +271,20 @@
 	    			{
 			    		post("formShowBrazo");
 	    			});
-			    };		
+		  			
+			    };	
 			    
+		    $scope.backMenu = function() {
+		    	$http({
+		    	    method: 'post',
+		    	    url: 'BackMenu'
+		    	})
+		    	.success(function(response){				
+					if(response.error == null){
+						post("formShowBrazo");
+					}
+					});}
+		    
 			    function isActive(slide) {
 			    	  return slide.active;
 		    	};

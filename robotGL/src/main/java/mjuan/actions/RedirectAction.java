@@ -19,5 +19,12 @@ public class RedirectAction implements Action
 		log.info("going to: " + forward);
 		return forward;
 	}
+	public String back() throws Exception
+	{
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.setAttribute("forward", "index");		
+		return SUCCESS;
+		
+	}
 
 }

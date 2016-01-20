@@ -96,10 +96,12 @@
 		</div>
 	
 		
-		
-		<form id="formShowBrazo" method="post" action="redirect" >
-				<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
-		</form>
+		<div align="center">
+			<form id="formShowBrazo" method="post" action="redirect" >
+					<input type="button" value="Probar brazo seleccionado" ng-click="show()" class="btn btn-primary"/>
+					<input type="button" value="Volver atras" ng-click="backMenu()" class="btn btn-warning"/>
+			</form>
+		</div>
 		
 		
 		
@@ -124,7 +126,17 @@
 	    			{
 			    		post("formShowBrazo");
 	    			});
-			    };		
+			    };
+		    $scope.backMenu = function() {
+		    	$http({
+		    	    method: 'post',
+		    	    url: 'BackMenu'
+		    	})
+		    	.success(function(response){				
+					if(response.error == null){
+						post("formShowBrazo");
+					}
+					});}
 			    
 			    function isActive(slide) {
 			    	  return slide.active;
