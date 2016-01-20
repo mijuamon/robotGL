@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.Action;
 
 public class BrazoAction implements Action 
 {
+	@SuppressWarnings("unused")
 	private static final Logger log = LogManager.getLogger(BrazoAction.class);
 	private String NSlider;
 	

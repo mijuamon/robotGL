@@ -44,7 +44,7 @@ public class Configuracion
 	@Column(name="LIMIT_ROT")
 	private int limit_rot;
 	
-	@Column(name="LIMIT_TRAS")
+	@Column(name="LIMIT_POS")
 	private int limit_pos;
 	
 	@Column(name="POS_X")
@@ -55,10 +55,7 @@ public class Configuracion
 	
 	@Column(name="POS_Z")
 	private int pos_z;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	private Pieza pieza;
-	
+		
 	public int getPos_x() {
 		return pos_x;
 	}
@@ -83,14 +80,6 @@ public class Configuracion
 		this.pos_z = pos_z;
 	}
 	
-	public Pieza getPieza() {
-		return pieza;
-	}
-
-	public void setPieza(Pieza pieza) {
-		this.pieza = pieza;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -167,9 +156,9 @@ public class Configuracion
 	{
 		// TODO Auto-generated method stub	
 		String txt="";
-		txt="pos:"+getPos_x()+","+getPos_y()+","+getPos_z()+"\n";
-		txt=txt+"rot:"+getRot_x()+","+getRot_y()+","+getRot_z()+"\n";
-		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+"\n";
+		txt="\"pos:"+getPos_x()+","+getPos_y()+","+getPos_z()+";";
+		txt=txt+"rot:"+getRot_x()+","+getRot_y()+","+getRot_z()+";";
+		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+";\"";
 		
 		return txt;
 	}

@@ -112,20 +112,17 @@ function setURL(url, conf)
 		
 		
 		//Cargamos el archivo de configuracion del modelo
-		//------------------------------------
-		var client = new XMLHttpRequest();
+		//------------------------------------		
 		if(conf!="")
-		{
-			client.get(url+'/config.cfg', function(result) 
-			{
-				var txt=result.split('\n');
-				var pos=txt[0].split(':')[1].split(',');
-				var rot=txt[1].split(':')[1].split(',');			
-				var sca=txt[2].split(':')[1].split(',');
-					
-				modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
-				modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
-			});
+		{			
+			var txt=conf.split(';');
+			var pos=txt[0].split(':')[1].split(',');
+			var rot=txt[1].split(':')[1].split(',');			
+			var sca=txt[2].split(':')[1].split(',');
+				
+			modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
+			modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
+			
 		}
 		//------------------------------------
 	

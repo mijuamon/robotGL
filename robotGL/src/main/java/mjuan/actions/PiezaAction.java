@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.Action;
 
 public class PiezaAction implements Action 
 {
+	@SuppressWarnings("unused")
 	private static final Logger log = LogManager.getLogger(BrazoAction.class);
 	private String Data;
 	

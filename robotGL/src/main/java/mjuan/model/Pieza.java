@@ -33,7 +33,7 @@ public class Pieza
 	private Tipo tipo_fk;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "CONF_FK")
+	@JoinColumn(name = "tipo_FK")
 	private Configuracion conf_fk;
 	
 	

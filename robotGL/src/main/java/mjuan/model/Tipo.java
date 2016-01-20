@@ -1,15 +1,10 @@
 package mjuan.model;
 
-import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,16 +13,16 @@ public class Tipo
 {
 	@Id
 	@Column(name="TIPO_ID")
-	private int tipo_ID;
+	private int tipo_FK;
 	
 	@Column(name="NOMBRE")
 	private String nombre;	
-
-	public int getTipo_ID() {
-		return tipo_ID;
+	
+	public int getTipo_FK() {
+		return tipo_FK;
 	}
-	public void setTipo_ID(int tipo_ID) {
-		this.tipo_ID = tipo_ID;
+	public void setTipo_FK(int tipo_FK) {
+		this.tipo_FK = tipo_FK;
 	}
 	public String getNombre() {
 		return nombre;
@@ -35,4 +30,5 @@ public class Tipo
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 }

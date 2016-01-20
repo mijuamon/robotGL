@@ -41,8 +41,8 @@
 				{
 					String url=piezas.get(i).getUrl();
 					String conf=piezas.get(i).getConf_fk().toString();
-			%>
-			setURL('<%=url%>','<%=conf%>');
+			%>			
+			setURL(<%="\""+url+"\""%>,<%=conf%>);
 			<%
 					i++;
 				}
