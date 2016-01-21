@@ -28,8 +28,14 @@
 		<script src="lib/threejs/three.min.js"></script>
 		<script src="lib/threejs/OrbitControls.js"></script>
 		<script src="lib/threejs/dat.gui.min.js"></script>
-		<script src="lib/threejs/stats.min.js"></script>
+		<script src="lib/threejs/stats.min.js"></script>	
+		<script src="lib/threejs/Projector.js"></script>
+		<script src="lib/threejs/CanvasRenderer.js"></script>
+			
+		<script src="js/variables.js"></script>
+		<script src="js/selectObject.js"></script>
 		<script src="js/webGL.js"></script>
+		
 		<script type="text/javascript">
 			<%
 				Brazo brazo = brazoDAO.getBrazo(id);

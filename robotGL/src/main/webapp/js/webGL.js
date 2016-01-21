@@ -1,85 +1,78 @@
-var width = window.innerWitdh,
-	height = window.innerHeight,
-	clock = new THREE.Clock(),
-	scene,
-	camera,
-	renderer,
-	ambientLight,
-	directionalLight,
-	loader,
-	modelo = new THREE.Object3D(),
-	cameraConmtrols,
-	URL;
-
-	init();
-	animate();	
-
-	if (!window.console) (function() {
-
-	    var __console, Console;
-
-	    Console = function() {
-	        var check = setInterval(function() {
-	            var f;
-	            if (window.console && console.log && !console.__buffer) {
-	                clearInterval(check);
-	                f = (Function.prototype.bind) ? Function.prototype.bind.call(console.log, console) : console.log;
-	                for (var i = 0; i < __console.__buffer.length; i++) f.apply(console, __console.__buffer[i]);
-	            }
-	        }, 1000); 
-
-	        function log() {
-	            this.__buffer.push(arguments);
-	        }
-
-	        this.log = log;
-	        this.error = log;
-	        this.warn = log;
-	        this.info = log;
-	        this.__buffer = [];
-	    };
-
-	    __console = window.console = new Console();
-	})();
-
+init();
+animate();	
 function init()
 {
+	//Obtenemos el objeto donde colocaremos el canvas
 	renderer = new THREE.WebGLRenderer({antialias: true});
 	renderer.setSize(width,height);	
 	renderer.setClearColor(new THREE.Color(0x0000AA),1.0);
 	document.getElementById('container').appendChild(renderer.domElement);
 	
-	scene =new THREE.Scene();
-	var aspectRatio = window.innerWidth/window.innerHeight;
+	//Creamos la escena
+	scene =new THREE.Scene();	
 	
+	//Grid de apoyo
+	scene.add(new THREE.GridHelper(20,1));
+	
+	//Cargador de modelos JSON
+	loader = new THREE.JSONLoader();	
+	
+	var PI2 = Math.PI * 2;
+	particleMaterial = new THREE.SpriteCanvasMaterial( {
+
+		color: 0x000000,
+		program: function ( context ) {
+
+			context.beginPath();
+			context.arc( 0, 0, 0.5, 0, PI2, true );
+			context.fill();
+
+		}});
+	
+	//Eventos
+	window.addEventListener('resize',updateAspectRatio);
+	document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+	document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+	
+	
+	
+	
+	
+	camera();
+	lights();
+	//controls();
+}
+
+//Creacion y inicializacion de controles
+function controls()
+{
+	
+	//Movimiento de la camara con el raton
+	cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
+	cameraControls.target.set(0,0,0);
+}
+
+//Creacion de la camara
+function camera()
+{
+	var aspectRatio = width/height;	
 	camera = new THREE.PerspectiveCamera(45, aspectRatio,0.1,100);
 	camera.position.set(0,5,30);
 	camera.lookAt(new THREE.Vector3(0,0,0));
 	
+}
+
+//CREACION DE LUCES
+function lights()
+{
+	//Luz ambiental
 	ambientLight = new THREE.AmbientLight(0xffffff);
-	scene.add(ambientLight);
+	scene.add(ambientLight);	
 	
+	//Luz direccional
 	directionalLight = new THREE.DirectionalLight(0xffffff);
 	directionalLight.position.set(0,1,0);
 	scene.add(directionalLight);
-	
-	scene.add(new THREE.GridHelper(10,1));
-	loader = new THREE.JSONLoader();	
-	
-	
-	//Cubo de prueba
-	/*var material = new THREE.MeshBasicMaterial({color:0xFF0000, wireframe:true});
-	var geometriaCubo = new THREE.CubeGeometry(2,2,2);
-	var cubo = new THREE.Mesh(geometriaCubo,material);
-	cubo.position.x=-1;
-	scene.add(cubo);*/
-	
-	
-	
-	cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
-	cameraControls.target.set(0,0,0);
-	window.addEventListener('resize',updateAspectRatio);
-	
 }
 
 function updateAspectRatio()
@@ -109,7 +102,7 @@ function setURL(url, conf)
 	{
 		//Cargamos el modelo
 		modelo = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-		
+		//modelo.geometry.computeTangents();
 		
 		//Cargamos el archivo de configuracion del modelo
 		//------------------------------------		
@@ -125,7 +118,7 @@ function setURL(url, conf)
 			
 		}
 		//------------------------------------
-	
+		objects.push( modelo );
 		scene.add(modelo);		
 	});	
 }
