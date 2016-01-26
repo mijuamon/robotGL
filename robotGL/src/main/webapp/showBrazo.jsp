@@ -4,6 +4,7 @@
 <%@page import="mjuan.dao.BrazoDAO"%>
 <%@page import="mjuan.dao.interfaces.BrazoIDAO"%>
 <%@page import="mjuan.model.Pieza"%>
+<%@page import="mjuan.model.SubPieza"%>
 <%@page import="java.util.List"%>
 
 
@@ -38,7 +39,7 @@
 		
 		<script type="text/javascript">
 			<%
-				Brazo brazo = brazoDAO.getBrazo(id);
+					Brazo brazo = brazoDAO.getBrazo(id);
 				
 				List<Pieza> piezas = brazo.getPiezas();
 				
@@ -46,10 +47,18 @@
 				while(i<piezas.size())
 				{
 					String url=piezas.get(i).getUrl();
-					String conf=piezas.get(i).getConf_fk().toString();
-			%>			
-			setURL(<%="\""+url+"\""%>,<%=conf%>);
-			<%
+					String tipo=piezas.get(i).getTipo_fk().getNombre();
+					List<SubPieza> subPiezas = piezas.get(i).getSubPiezas();
+					int u=0;
+					while(u<subPiezas.size())
+					{
+						String conf=subPiezas.get(u).getConf().toString();
+						int n = subPiezas.get(u).getOrden();
+						%>			
+						setURL(<%="\""+url+"/"+tipo+"/"+tipo+n+".json\""%>,<%=conf%>);
+						<%
+						u++;
+					}
 					i++;
 				}
 			%>

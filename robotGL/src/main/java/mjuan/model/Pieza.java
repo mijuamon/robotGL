@@ -1,5 +1,7 @@
 package mjuan.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -32,9 +35,8 @@ public class Pieza
 	@JoinColumn(name = "TIPO_FK")
 	private Tipo tipo_fk;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
-	private Configuracion conf_fk;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="pieza")
+	private List<SubPieza> subPiezas;
 	
 	
 	@Column(name="DESCRIPCION")
@@ -92,10 +94,11 @@ public class Pieza
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Configuracion getConf_fk() {
-		return conf_fk;
+	public List<SubPieza> getSubPiezas() {
+		return subPiezas;
 	}
-	public void setConf_fk(Configuracion conf_fk) {
-		this.conf_fk = conf_fk;
+	public void setSubPiezas(List<SubPieza> subPiezas) {
+		this.subPiezas = subPiezas;
 	}
+
 }

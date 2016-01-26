@@ -19,5 +19,6 @@
 		  <mapping class="mjuan.model.Tipo"></mapping>
 		  <mapping class="mjuan.model.Configuracion"></mapping>
 		  <mapping class="mjuan.model.Compatibilidad"></mapping>
+		  <mapping class="mjuan.model.SubPieza"></mapping>
 	</session-factory>
 </hibernate-configuration>

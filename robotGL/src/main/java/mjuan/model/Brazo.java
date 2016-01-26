@@ -36,7 +36,7 @@ public class Brazo
 	private String img;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "pieza_id")
+	@JoinColumn(name = "brazo_fk")
 	private List<Pieza> piezas;
 	
 	

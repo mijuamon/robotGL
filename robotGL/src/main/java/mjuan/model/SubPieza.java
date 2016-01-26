@@ -23,14 +23,14 @@ public class SubPieza
 	@SequenceGenerator(name = "generator", sequenceName = "SP_SEQ", allocationSize=1) 
 	int id;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "pieza_id")
+	@ManyToOne
+	@JoinColumn(name = "pieza_id") 
 	Pieza pieza;
 	
 	@Column(name="orden")
 	int orden;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	Configuracion conf;
 	

@@ -1,5 +1,4 @@
-init();
-animate();	
+
 function init()
 {
 	//Obtenemos el objeto donde colocaremos el canvas
@@ -40,7 +39,7 @@ function init()
 	
 	camera();
 	lights();
-	//controls();
+	controls();
 }
 
 //Creacion y inicializacion de controles
@@ -94,11 +93,8 @@ function animate() {
 }
 
 function setURL(url, conf)
-{
-	//window.stop()
-	URL = url+'/model.json';	
-	
-	loader.load(URL, function(geometry,materials)
+{	
+	loader.load(url, function(geometry,materials)
 	{
 		//Cargamos el modelo
 		modelo = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
@@ -123,4 +119,5 @@ function setURL(url, conf)
 	});	
 }
 
-
+init();
+animate();	
