@@ -9,11 +9,11 @@
 <%@page import="mjuan.util.Global"%>
 
 <%
-	PiezaIDAO brazoDAO = PiezaDAO.getInstance();
+	PiezaIDAO piezaDAO = PiezaDAO.getInstance();
 
-	List<Pieza> bases = brazoDAO.getBases();
-	List<Pieza> antebrazos = brazoDAO.getAntebrazos();
-	List<Pieza> manos = brazoDAO.getManos();
+	List<Pieza> bases = piezaDAO.getBases();
+	List<Pieza> antebrazos = piezaDAO.getAntebrazos();
+	List<Pieza> manos = piezaDAO.getManos();
 %>
 
 <html>
@@ -253,9 +253,9 @@
 			    $scope.show = function() {
 			    	
 			    	
-		  			$scope.currentBaseIndex = $("div.active#base").index() + 1;//Saca el indice actual del carousel
-		  			$scope.currentAnteIndex = $("div.active#ante").index() + 1;//Saca el indice actual del carousel
-		  			$scope.currentManoIndex = $("div.active#mano").index() + 1;//Saca el indice actual del carousel
+		  			$scope.currentBaseIndex = $("div.active#base").index();//Saca el indice actual del carousel
+		  			$scope.currentAnteIndex = $("div.active#ante").index();//Saca el indice actual del carousel
+		  			$scope.currentManoIndex = $("div.active#mano").index();//Saca el indice actual del carousel
 		  			
 		  			
 		  			var params = "Data :"+$scope.currentBaseIndex+":"+$scope.currentAnteIndex+":"+$scope.currentManoIndex;

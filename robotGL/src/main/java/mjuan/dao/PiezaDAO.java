@@ -22,7 +22,7 @@ public class PiezaDAO implements PiezaIDAO
 		try
 		{
 			session.beginTransaction();				
-			List l = session.createQuery("FROM Tipo t WHERE t.nombre = 'BASE'").list();
+			List l = session.createQuery("FROM Tipo t WHERE t.nombre = 'base'").list();
 			Tipo t=(Tipo)l.get(0);			
 			
 			String sql ="FROM Pieza p WHERE p.tipo_fk = '"+t.getTipo_FK()+"' ORDER BY p.pieza_id";
@@ -45,7 +45,7 @@ public class PiezaDAO implements PiezaIDAO
 		try
 		{
 			session.beginTransaction();				
-			List l = session.createQuery("FROM Tipo t WHERE t.nombre = 'ANTEBRAZO'").list();
+			List l = session.createQuery("FROM Tipo t WHERE t.nombre = 'antebrazo'").list();
 			Tipo t=(Tipo)l.get(0);			
 			
 			String sql ="FROM Pieza p WHERE p.tipo_fk = '"+t.getTipo_FK()+"' ORDER BY p.pieza_id";
@@ -67,7 +67,7 @@ public class PiezaDAO implements PiezaIDAO
 		try
 		{
 			session.beginTransaction();				
-			List l = session.createQuery("FROM Tipo t WHERE t.nombre = 'MANO'").list();
+			List l = session.createQuery("FROM Tipo t WHERE t.nombre = 'mano'").list();
 			Tipo t=(Tipo)l.get(0);			
 			
 			String sql ="FROM Pieza p WHERE p.tipo_fk = '"+t.getTipo_FK()+"' ORDER BY p.pieza_id";
