@@ -34,7 +34,6 @@
 		<script src="lib/threejs/CanvasRenderer.js"></script>
 			
 		<script src="js/variables.js"></script>
-		<script src="js/selectObject.js"></script>
 		<script src="js/webGL.js"></script>
 		
 		<script type="text/javascript">

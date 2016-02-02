@@ -19,7 +19,10 @@ var width = window.innerWitdh,
 	mano = new THREE.Object3D(),
 	cameraConmtrols,
 	URL;
-var objects = [];
-var mouse = new THREE.Vector2();
-var raycaster = new THREE.Raycaster();
 var particleMaterial;
+
+//Object pick
+var objects = new THREE.Object3D();
+var projector = new THREE.Projector();
+var mouseVector = new THREE.Vector3();
+var actual = new THREE.Mesh();//Guardamos el objeto que tiene el puntero para luego devolverle el color
