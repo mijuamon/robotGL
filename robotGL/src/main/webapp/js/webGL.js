@@ -11,8 +11,12 @@ function init()
 	scene =new THREE.Scene();	
 	
 	//Grid de apoyo
-	scene.add(new THREE.GridHelper(20,1));
+	//scene.add(new THREE.GridHelper(20,1));
 	
+	LineGeometry.vertices.push(new THREE.Vector3(0, 10, 0));
+	line = new THREE.Line(LineGeometry, LineMaterial);
+	
+	scene.add(line);
 	//Cargador de modelos JSON
 	loader = new THREE.JSONLoader();	
 	
@@ -34,17 +38,11 @@ function init()
 	
 	
 	////////////////////////////
-	var material = new THREE.MeshBasicMaterial({color:0xFF0000, wireframe:true});
-	var geometriaCubo = new THREE.CubeGeometry(10,10,10);
-	var cubo = new THREE.Mesh(geometriaCubo,material);
-	cubo.position.x=-7;
-	scene.add(cubo);
-	objects.add(cubo);
 	
 	camera();
 	lights();
-	controls();
-	//animate();
+	controls();	
+	renderer.render(scene, camera);
 }
 function animate() {
 	requestAnimationFrame( animate );
@@ -77,17 +75,57 @@ function onMouseMove( e ) {
 		var intersection = intersects[ 0 ];
 		var obj = intersection.object;
 
-		var aux = obj.material.materials;		
-		//Recorremos todos los materiales del objeto
-		if (aux!=null)
+		var aux = obj.material.materials;	
+		//Quizas en vez de cambiar el color de la figura, si le ponemos una polilinea rodenado el objeto funcione mejor
+		
+		////////////////////////////////////////////////
+		LineGeometry = new THREE.Geometry();
+		var contorno = obj.geometry.vertices;
+		var pV=contorno[0];
+		pV.setY=pV.y+0.1;
+		LineGeometry.vertices.push(pV);
+		
+		for(i=1;i<contorno.length;i++)
 		{
-			//Debe restablecer el objeto seleccionado al color original antes de cambiar al siguiente
+			auxVert=contorno[0]
+			if(auxVert.x>0)			
+				auxVert.setX=auxVert.x+0.1;			
+			else if(auxVert.x<0)
+				auxVert.setX=auxVert.x-0.1;
+			
+			if(auxVert.y>0)			
+				auxVert.setY=auxVert.y+0.1;			
+			else if(auxVert.y<0)
+				auxVert.setY=auxVert.y-0.1;
+			
+			if(auxVert.z>0)			
+				auxVert.setZ=auxVert.z+0.1;			
+			else if(auxVert.z<0)
+				auxVert.setZ=auxVert.z-0.1;
+			LineGeometry.vertices.push(auxVert);			
+			
+		}
+		
+		line = new THREE.Line(LineGeometry, LineMaterial);
+				
+		/////////////////////////////////////////////////
+		
+		//Recorremos todos los materiales del objeto
+		/*if (aux!=null && obj!=actual)
+		{
+			//No restablece correctamente el color
+			if(actual!=null)
+			{
+				actual.material=Pmaterials;
+			}
+			actual=obj
+			Pmaterials=aux;
 			for (var u=0; u<aux.length; u++)
 			{
-				aux[u].color.setHex( 0xffffff);//Mejor setRGB
+				aux[u].color.setRGB( 1,1,1);//Mejor setRGB
 				
 			}
-		}
+		}*/
 	}	
 }
 

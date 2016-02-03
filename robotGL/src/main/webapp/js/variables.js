@@ -25,4 +25,12 @@ var particleMaterial;
 var objects = new THREE.Object3D();
 var projector = new THREE.Projector();
 var mouseVector = new THREE.Vector3();
-var actual = new THREE.Mesh();//Guardamos el objeto que tiene el puntero para luego devolverle el color
+var actual;//Guardamos el objeto que tiene el puntero para luego devolverle el color
+var Pmaterials;//Los materiales del objeto que actualmente tiene el puntero
+
+var LineMaterial = new THREE.LineBasicMaterial({
+    color: 0x0000ff
+});
+var LineGeometry = new THREE.Geometry();
+var auxVert;
+var line;
