@@ -74,59 +74,66 @@ function onMouseMove( e ) {
 	{
 		var intersection = intersects[ 0 ];
 		var obj = intersection.object;
+		
+		if(obj.name=="SelObj")
+		{
 
-		var aux = obj.material.materials;	
-		//Quizas en vez de cambiar el color de la figura, si le ponemos una polilinea rodenado el objeto funcione mejor
-		
-		////////////////////////////////////////////////
-		LineGeometry = new THREE.Geometry();
-		var contorno = obj.geometry.vertices;
-		var pV=contorno[0];
-		pV.setY=pV.y+0.1;
-		LineGeometry.vertices.push(pV);
-		
-		for(i=1;i<contorno.length;i++)
-		{
-			auxVert=contorno[0]
-			if(auxVert.x>0)			
-				auxVert.setX=auxVert.x+0.1;			
-			else if(auxVert.x<0)
-				auxVert.setX=auxVert.x-0.1;
+			var aux = obj.material.materials;	
+			//Quizas en vez de cambiar el color de la figura, si le ponemos una polilinea rodenado el objeto funcione mejor
 			
-			if(auxVert.y>0)			
-				auxVert.setY=auxVert.y+0.1;			
-			else if(auxVert.y<0)
-				auxVert.setY=auxVert.y-0.1;
+			////////////////////////////////////////////////
+			LineGeometry = new THREE.Geometry();
+			var contorno = obj.geometry.vertices;
+			var pV=new THREE.Vector3(contorno[0].x,contorno[0].y,contorno[0].z);
+			pV.setY=pV.y+0.1;
+			LineGeometry.vertices.push(pV);
 			
-			if(auxVert.z>0)			
-				auxVert.setZ=auxVert.z+0.1;			
-			else if(auxVert.z<0)
-				auxVert.setZ=auxVert.z-0.1;
-			LineGeometry.vertices.push(auxVert);			
+			for(i=1;i<contorno.length;i++)
+			{
+				auxVert=contorno[i]
+				var auxX,auxY,auxZ;
+				if(auxVert.x>0)			
+					auxX=auxVert.x+0.1;			
+				else if(auxVert.x<0)
+					auxX=auxVert.x-0.1;
+				
+				if(auxVert.y>0)			
+					auxY=auxVert.y+0.1;			
+				else if(auxVert.y<0)
+					auxY=auxVert.y-0.1;
+				
+				if(auxVert.z>0)			
+					auxZ=auxVert.z+0.1;			
+				else if(auxVert.z<0)
+					auxZ=auxVert.z-0.1;
+				LineGeometry.vertices.push(new THREE.Vector3(auxX,auxY,auxZ));			
+				
+			}
 			
+			removeEntity(line);
+			line = new THREE.Line(LineGeometry, LineMaterial);
+			scene.add(line);
+			/////////////////////////////////////////////////
+			
+			//Recorremos todos los materiales del objeto
+			/*if (aux!=null && obj!=actual)
+			{
+				//No restablece correctamente el color
+				if(actual!=null)
+				{
+					actual.material=Pmaterials;
+				}
+				actual=obj
+				Pmaterials=aux;
+				for (var u=0; u<aux.length; u++)
+				{
+					aux[u].color.setRGB( 1,1,1);//Mejor setRGB
+					
+				}
+			}*/
 		}
-		
-		line = new THREE.Line(LineGeometry, LineMaterial);
-				
-		/////////////////////////////////////////////////
-		
-		//Recorremos todos los materiales del objeto
-		/*if (aux!=null && obj!=actual)
-		{
-			//No restablece correctamente el color
-			if(actual!=null)
-			{
-				actual.material=Pmaterials;
-			}
-			actual=obj
-			Pmaterials=aux;
-			for (var u=0; u<aux.length; u++)
-			{
-				aux[u].color.setRGB( 1,1,1);//Mejor setRGB
-				
-			}
-		}*/
-	}	
+	}
+	animate();
 }
 
 //Creacion y inicializacion de controles
@@ -200,10 +207,17 @@ function setURL(url, conf)
 			modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
 			
 		}
-		//------------------------------------		
-		objects.add(modelo);
+		//------------------------------------
+		modelo.name="SelObj";
+		//objects.add(modelo);
 		scene.add(modelo);		
 	});	
+}
+
+function removeEntity(object) {
+    var selectedObject = scene.getObjectByName(object.name);
+    scene.remove( selectedObject );
+    animate();
 }
 
 init();

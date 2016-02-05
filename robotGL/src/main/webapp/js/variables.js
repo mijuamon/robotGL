@@ -22,14 +22,14 @@ var width = window.innerWitdh,
 var particleMaterial;
 
 //Object pick
-var objects = new THREE.Object3D();
+var objects=new Array;
 var projector = new THREE.Projector();
 var mouseVector = new THREE.Vector3();
 var actual;//Guardamos el objeto que tiene el puntero para luego devolverle el color
 var Pmaterials;//Los materiales del objeto que actualmente tiene el puntero
 
 var LineMaterial = new THREE.LineBasicMaterial({
-    color: 0x0000ff
+    color: 0xFF00ff
 });
 var LineGeometry = new THREE.Geometry();
 var auxVert;
