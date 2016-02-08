@@ -29,7 +29,7 @@ var actual;//Guardamos el objeto que tiene el puntero para luego devolverle el c
 var Pmaterials;//Los materiales del objeto que actualmente tiene el puntero
 
 var LineMaterial = new THREE.LineBasicMaterial({
-    color: 0xFF00ff
+    color: 0xF6CC4C
 });
 var LineGeometry = new THREE.Geometry();
 var auxVert;

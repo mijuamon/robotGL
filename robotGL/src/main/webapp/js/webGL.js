@@ -34,7 +34,7 @@ function init()
 	
 	//Eventos
 	window.addEventListener('resize',updateAspectRatio);
-	window.addEventListener( 'mousemove', onMouseMove, false );
+	window.addEventListener( 'mousedown', onDocumentMouseDown, false );
 	
 	
 	////////////////////////////
@@ -50,7 +50,7 @@ function animate() {
 	renderer.render( scene, camera );
 }
 
-function onMouseMove( e ) {
+function onDocumentMouseDown( e ) {
 	
 	mouseVector.x = 2 * (e.clientX / width) - 1;
 	mouseVector.y = 1 - 2 * ( e.clientY / height );
@@ -65,9 +65,9 @@ function onMouseMove( e ) {
 	//var raycaster = projector.setFromCamera( mouseVector.clone(), camera );
 	var intersects = raycaster.intersectObjects( scene.children );
 
-	objects.children.forEach(function( cube ) {
+	/*objects.children.forEach(function( cube ) {
 		cube.material.color.setRGB( cube.grayness, cube.grayness, cube.grayness );
-	});
+	});*/
 
 		
 	if( intersects.length>=1 ) 
@@ -79,58 +79,50 @@ function onMouseMove( e ) {
 		{
 
 			var aux = obj.material.materials;	
-			//Quizas en vez de cambiar el color de la figura, si le ponemos una polilinea rodenado el objeto funcione mejor
 			
-			////////////////////////////////////////////////
+			
+			var geometry = obj.geometry;
+			
+			
+			geometry.computeBoundingBox();
+
+			var pv = new THREE.Vector3();
+			pv.addVectors( geometry.boundingBox.min, geometry.boundingBox.max );
+			pv.multiplyScalar( - 0.5 );
+
+			//pv.applyMatrix4( obj.matrixWorld );
+			//var pV=new THREE.Vector3(centerX,centerY,centerZ);
+			
+
 			LineGeometry = new THREE.Geometry();
 			var contorno = obj.geometry.vertices;
-			var pV=new THREE.Vector3(contorno[0].x,contorno[0].y,contorno[0].z);
-			pV.setY=pV.y+0.1;
-			LineGeometry.vertices.push(pV);
 			
-			for(i=1;i<contorno.length;i++)
+			
+			for(i=0;i<contorno.length;i++)
 			{
 				auxVert=contorno[i]
 				var auxX,auxY,auxZ;
-				if(auxVert.x>0)			
-					auxX=auxVert.x+0.1;			
-				else if(auxVert.x<0)
-					auxX=auxVert.x-0.1;
+				if(auxVert.x>pv.x)			
+					auxX=auxVert.x+0.05;			
+				else if(auxVert.x<pv.x)
+					auxX=auxVert.x-0.05;
 				
-				if(auxVert.y>0)			
-					auxY=auxVert.y+0.1;			
-				else if(auxVert.y<0)
-					auxY=auxVert.y-0.1;
+				if(auxVert.y>pv.y)			
+					auxY=auxVert.y+0.05;			
+				else if(auxVert.y<pv.y)
+					auxY=auxVert.y-0.05;
 				
-				if(auxVert.z>0)			
-					auxZ=auxVert.z+0.1;			
-				else if(auxVert.z<0)
-					auxZ=auxVert.z-0.1;
+				if(auxVert.z>pv.z)			
+					auxZ=auxVert.z+0.05;			
+				else if(auxVert.z<pv.z)
+					auxZ=auxVert.z-0.05;
 				LineGeometry.vertices.push(new THREE.Vector3(auxX,auxY,auxZ));			
 				
 			}
 			
-			removeEntity(line);
+			scene.remove(line);
 			line = new THREE.Line(LineGeometry, LineMaterial);
 			scene.add(line);
-			/////////////////////////////////////////////////
-			
-			//Recorremos todos los materiales del objeto
-			/*if (aux!=null && obj!=actual)
-			{
-				//No restablece correctamente el color
-				if(actual!=null)
-				{
-					actual.material=Pmaterials;
-				}
-				actual=obj
-				Pmaterials=aux;
-				for (var u=0; u<aux.length; u++)
-				{
-					aux[u].color.setRGB( 1,1,1);//Mejor setRGB
-					
-				}
-			}*/
 		}
 	}
 	animate();
@@ -213,12 +205,5 @@ function setURL(url, conf)
 		scene.add(modelo);		
 	});	
 }
-
-function removeEntity(object) {
-    var selectedObject = scene.getObjectByName(object.name);
-    scene.remove( selectedObject );
-    animate();
-}
-
 init();
 animate();	
