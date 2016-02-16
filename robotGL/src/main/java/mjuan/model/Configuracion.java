@@ -156,7 +156,8 @@ public class Configuracion
 		String txt="";
 		txt="\"pos:"+getPos_x()+","+getPos_y()+","+getPos_z()+";";
 		txt=txt+"rot:"+getRot_x()+","+getRot_y()+","+getRot_z()+";";
-		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+";\"";
+		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+";";
+		txt=txt+"lim:"+getLimit_pos()+","+getLimit_rot()+";\"";
 		
 		return txt;
 	}

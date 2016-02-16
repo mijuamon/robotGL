@@ -60,7 +60,10 @@
 					}
 					i++;
 				}
-			%>
+			%>			
+ 		</script>
+ 		<script type="text/javascript">
+ 		startScene();
  		</script>
 		
 	</body>

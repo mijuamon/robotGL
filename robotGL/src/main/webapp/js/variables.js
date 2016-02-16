@@ -1,8 +1,14 @@
 /**
- * ALMACENAMIENTO DE TODAS LAS VARIABLES
+ * ALMACENAMIENTO DE TODAS LAS VARIABLES GLOBALES
  */
 
-var width = window.innerWitdh,
+//////////////DEBUG///////////////////
+var show_tray=true; //Para si queremos ver las trayectorias del raycaster
+/////////////////////////////////////
+
+
+
+var width = window.innerWidth,
 	height = window.innerHeight,
 	clock = new THREE.Clock(),
 	scene,
@@ -11,26 +17,26 @@ var width = window.innerWitdh,
 	ambientLight,
 	directionalLight,
 	loader,
-	//Objeto que engobla los objetos que se modificaran
-	modelo = new THREE.Object3D(),
-	suelo = new THREE.Object3D(),
-	base = new THREE.Object3D(),
-	antebrazo = new THREE.Object3D(),
-	mano = new THREE.Object3D(),
-	cameraConmtrols,
 	URL;
-var particleMaterial;
 
-//Object pick
-var objects=new Array;
-var projector = new THREE.Projector();
-var mouseVector = new THREE.Vector3();
-var actual;//Guardamos el objeto que tiene el puntero para luego devolverle el color
-var Pmaterials;//Los materiales del objeto que actualmente tiene el puntero
+var mouseVector = new THREE.Vector2();
 
-var LineMaterial = new THREE.LineBasicMaterial({
-    color: 0xF6CC4C
-});
-var LineGeometry = new THREE.Geometry();
-var auxVert;
+//Almacenamos el objeto polilinea del objeto seleccionado
 var line;
+var currentObject;
+
+//Usado para guardar el orden en que se guarada en el arbol.
+//Cada object3D tendra la variable indice con el mismo valor que el objeto
+//que tiene.
+var indice=0;
+
+//Guardamos el indice del objeto seleccionado
+var actualObject;
+
+//Para el orden en que se encuentran los brazos
+var brazo=new THREE.Object3D();
+var actualObject3d=brazo; //Usado para guardar la parte de brazo anteriormente guardado.
+
+var objects=[];
+
+var LineMaterial;
