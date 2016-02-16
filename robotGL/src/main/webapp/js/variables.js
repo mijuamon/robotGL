@@ -22,7 +22,7 @@ var width = window.innerWidth,
 var mouseVector = new THREE.Vector2();
 
 //Almacenamos el objeto polilinea del objeto seleccionado
-var line;
+var selected_line;
 var currentObject;
 
 //Usado para guardar el orden en que se guarada en el arbol.
