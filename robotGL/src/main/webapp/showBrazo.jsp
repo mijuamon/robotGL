@@ -35,6 +35,34 @@
 			
 		<script src="js/variables.js"></script>
 		<script src="js/baseConverter.js"></script>
+		
+<!-- ---------------- Custom Shader Code ------------------------ -->
+		<script id="vertexShader" type="x-shader/x-vertex">
+			uniform vec3 viewVector;
+			uniform float c;
+			uniform float p;
+			varying float intensity;
+			void main() 
+			{
+   				vec3 vNormal = normalize( normalMatrix * normal );
+				vec3 vNormel = normalize( normalMatrix * viewVector );
+				intensity = pow( c - dot(vNormal, vNormel), p );
+	
+    			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+		</script>
+		
+		<!-- fragment shader a.k.a. pixel shader -->
+		<script id="fragmentShader" type="x-shader/x-vertex"> 
+			uniform vec glowColor;
+			varying float intensity;
+			void main() 
+		{
+			vec3 glow = glowColor * intensity;
+    		gl_FragColor = vec4( glow, 1.0 );
+		}
+		</script>
+		
 		<script src="js/input.js"></script>
 		<script src="js/webGL.js"></script>
 		

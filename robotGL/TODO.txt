@@ -1,0 +1,2 @@
+* El movimiento de las piezas no se produce como se espera.
+* hacer que la seleccion de un objeto tenga un efecto glow (http://stemkoski.github.io/Three.js/Shader-Glow.html)
