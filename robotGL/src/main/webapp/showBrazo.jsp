@@ -72,8 +72,8 @@
 				
 				List<Pieza> piezas = brazo.getPiezas();
 				
-				int i=0;
-				while(i<piezas.size())
+				int i=piezas.size()-1;
+				while(i>=0)
 				{
 					String url=piezas.get(i).getUrl();
 					String tipo=piezas.get(i).getTipo_fk().getNombre();
@@ -88,7 +88,7 @@
 						<%
 						u++;
 					}
-					i++;
+					i--;
 				}
 			%>			
  		</script>
