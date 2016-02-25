@@ -266,12 +266,22 @@ function MouseInput( e ) {
 		
 	
 
+			
+			
+			
+			var geometry = obj.geometry.clone();		
+			
+			glow = new THREE.Mesh( geometry, customMaterial.clone() );
+			
+			glow.position = obj.position;
+			glow.scale.multiplyScalar(1.05);
+			scene.add( glow );
+			selected_line=glow;
+			
+			//Malla alrededor del objeto seleccionado
+			/*
+			 
 			var aux = obj.material.materials;	
-			
-			
-			var geometry = obj.geometry;
-			
-			
 			geometry.computeBoundingBox();
 
 			var pv = new THREE.Vector3();
@@ -309,9 +319,13 @@ function MouseInput( e ) {
 			}
 			
 			scene.remove(selected_line);
-			selected_line = new THREE.Line(LineGeometry, LineMaterial);
-			scene.add(selected_line);
+			selected_line = new THREE.Line(LineGeometry, LineMaterial);			
+			scene.add(selected_line);*/	
 			
+			
+			
+			
+			//Asignamos actualObject al objeto seleccionado
 			actualObject=obj;
 		
 	}

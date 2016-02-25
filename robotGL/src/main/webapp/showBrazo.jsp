@@ -68,7 +68,7 @@
 		
 		<script type="text/javascript">
 			<%
-					Brazo brazo = brazoDAO.getBrazo(id);
+				Brazo brazo = brazoDAO.getBrazo(id);
 				
 				List<Pieza> piezas = brazo.getPiezas();
 				

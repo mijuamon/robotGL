@@ -3,7 +3,7 @@
  */
 
 //////////////DEBUG///////////////////
-var show_tray=true; //Para si queremos ver las trayectorias del raycaster
+var show_tray=false; //Para si queremos ver las trayectorias del raycaster
 /////////////////////////////////////
 
 
@@ -43,19 +43,9 @@ var LineMaterial;
 var line_tray;
 
 
-//SHADERS
-var customMaterial = new THREE.ShaderMaterial( 
-		{
-		    uniforms: 
-			{ 
-				"c":   { type: "f", value: 1.0 },
-				"p":   { type: "f", value: 1.4 },
-				glowColor: { type: "c", value: new THREE.Color(0xffff00) },
-				viewVector: { type: "v3", value: camera.position }
-			},
-			vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
-			fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
-			side: THREE.FrontSide,
-			blending: THREE.AdditiveBlending,
-			transparent: true
-		}   );
+//SHADERS 
+//-------
+
+//material
+var customMaterial;
+var glow;
