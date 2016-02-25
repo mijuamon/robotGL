@@ -53,7 +53,9 @@
     
     //Position pos in binary number
     ConvertBase.bitPos = function (num,pos){
-    	return (num >> pos).toString(2);
+    	var bin=(num >>> 0).toString(2)
+    	var test =(bin >> pos)&0x01;
+    	return test;
     }
     
     this.ConvertBase = ConvertBase;

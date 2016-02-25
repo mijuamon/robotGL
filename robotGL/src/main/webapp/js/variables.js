@@ -40,7 +40,7 @@ var actualObject3d=brazo; //Usado para guardar la parte de brazo anteriormente g
 var objects=[];
 
 var LineMaterial;
-
+var line_tray;
 
 
 //SHADERS

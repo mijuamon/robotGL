@@ -24,12 +24,14 @@ function keyboardInput(event)
 			
 			//EJES
 			var axisX= new THREE.Vector3(1,0,0); 
-			var axisY= new THREE.Vector3(1,0,0); 
-			var axisZ= new THREE.Vector3(1,0,0); 
+			var axisY= new THREE.Vector3(0,1,0); 
+			var axisZ= new THREE.Vector3(0,0,1); 
 			
 			var prev_pos=new THREE.Vector3(auxObjects3D.position);
-			auxObjects3D.position=new THREE.Vector3(0,0,0);//Movemos a origen antes de hacer alguna transformacion
+			var prev_pos_sel=new THREE.Vector3(line_tray.position);
 			
+			auxObjects3D.position=new THREE.Vector3(0,0,0);//Movemos a origen antes de hacer alguna transformacion
+			line_tray.position=new THREE.Vector3(0,0,0);
 			
 			if(auxObjects3D.lim_pos!=0 && auxObjects3D.lim_rot!=0)//Rotacion y desplazamiento
 			{
@@ -38,38 +40,74 @@ function keyboardInput(event)
 				 
 				 //DESPLAZAMIENTO
 					case 65: // Left A -- reduce
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),1)==1)//X
-							auxObjects3D.translateOnAxis( axisX,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),2)==1)//Y
-							auxObjects3D.translateOnAxis( axisY,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),3)==1)//Z
-							auxObjects3D.translateOnAxis( axisZ,-0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
+							{
+								auxObjects3D.translateOnAxis( axisX,-0.1);
+								line_tray.translateOnAxis( axisX,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
+							{
+								auxObjects3D.translateOnAxis( axisY,-0.1);
+								line_tray.translateOnAxis( axisY,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
+							{
+								auxObjects3D.translateOnAxis( axisZ,-0.1);
+								line_tray.translateOnAxis( axisZ,-0.1);
+							}
 					  break;	
 					case 68: // Right D -- increase
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),1)==1)//X
-							auxObjects3D.translateOnAxis( axisX,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),2)==1)//Y
-							auxObjects3D.translateOnAxis( axisY,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),3)==1)//Z
-							auxObjects3D.translateOnAxis( axisZ,0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
+							{
+								auxObjects3D.translateOnAxis( axisX,0.1);
+								line_tray.translateOnAxis( axisX,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
+							{
+								uxObjects3D.translateOnAxis( axisY,0.1);
+								line_tray.translateOnAxis( axisY,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
+							{
+								auxObjects3D.translateOnAxis( axisZ,0.1);
+								line_tray.translateOnAxis( axisZ,0.1);
+							}
 					  break;
 					  
 					  //ROTACION
 					case 87: // Up
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),1)==1)//X
-							auxObjects3D.rotateOnAxis( axisX,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),2)==1)//Y
-							auxObjects3D.rotateOnAxis( axisY,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),3)==1)//Z
-							auxObjects3D.rotateOnAxis( axisZ,-0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
+							{
+								auxObjects3D.rotateOnAxis( axisX,-0.1);
+								line_tray.rotateOnAxis(axisX,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
+							{
+								auxObjects3D.rotateOnAxis( axisY,-0.1);
+								line_tray.rotateOnAxis(axisY,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
+							{
+								auxObjects3D.rotateOnAxis( axisZ,-0.1);
+								line_tray.rotateOnAxis(axisZ,-0.1);
+							}
 					  break;
 					case 83: // Down
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),1)==1)//X
-							auxObjects3D.rotateOnAxis( axisX,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),2)==1)//Y
-							auxObjects3D.rotateOnAxis( axisY,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),3)==1)//Z
-							auxObjects3D.rotateOnAxis( axisZ,0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
+							{
+								auxObjects3D.rotateOnAxis( axisX,0.1);
+								line_tray.rotateOnAxis(axisX,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
+							{
+								auxObjects3D.rotateOnAxis( axisY,0.1);
+								line_tray.rotateOnAxis(axisY,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
+							{
+								auxObjects3D.rotateOnAxis( axisZ,0.1);
+								line_tray.rotateOnAxis(axisZ,0.1);
+							}
 					  break;
 				  }
 			}
@@ -80,49 +118,87 @@ function keyboardInput(event)
 				 
 				 //DESPLAZAMIENTO
 					case 65: // Left A -- reduce
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),1)==1)//X
-							auxObjects3D.translateOnAxis( axisX,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),2)==1)//Y
-							auxObjects3D.translateOnAxis( axisY,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),3)==1)//Z
-							auxObjects3D.translateOnAxis( axisZ,-0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
+							{
+								auxObjects3D.translateOnAxis( axisX,-0.1);
+								line_tray.translateOnAxis( axisX,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
+							{
+								auxObjects3D.translateOnAxis( axisY,-0.1);
+								line_tray.translateOnAxis( axisY,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
+							{
+								auxObjects3D.translateOnAxis( axisZ,-0.1);
+								line_tray.translateOnAxis( axisZ,-0.1);
+							}
 					  break;	
 					case 68: // Right D -- increase
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),1)==1)//X
-							auxObjects3D.translateOnAxis( axisX,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),2)==1)//Y
-							auxObjects3D.translateOnAxis( axisY,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_pos),3)==1)//Z
-							auxObjects3D.translateOnAxis( axisZ,0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
+							
+							{
+								auxObjects3D.translateOnAxis( axisX,0.1);
+								line_tray.translateOnAxis( axisX,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
+							{
+								auxObjects3D.translateOnAxis( axisY,0.1);
+								line_tray.translateOnAxis( axisY,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
+							{
+								auxObjects3D.translateOnAxis( axisZ,0.1);
+								line_tray.translateOnAxis( axisZ,0.1);
+							}
 					  break;
 				  }
 			}
-			else //Solo rotacion
+			else if(auxObjects3D.lim_rot!=0)//Solo rotacion
 			{
 				 switch (event.keyCode) 
 				 {  
 					  //ROTACION
 					case 87: // Up
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),1)==1)//X
-							auxObjects3D.rotateOnAxis( axisX,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),2)==1)//Y
-							auxObjects3D.rotateOnAxis( axisY,-0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),3)==1)//Z
-							auxObjects3D.rotateOnAxis( axisZ,-0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
+							{
+								auxObjects3D.rotateOnAxis( axisX,-0.1);
+								line_tray.rotateOnAxis( axisX,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
+							{
+								auxObjects3D.rotateOnAxis( axisY,-0.1);
+								line_tray.rotateOnAxis( axisY,-0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
+							{
+								auxObjects3D.rotateOnAxis( axisZ,-0.1);
+								line_tray.rotateOnAxis( axisZ,-0.1);
+							}
 					  break;
 					case 83: // Down
-						if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),1)==1)//X
-							auxObjects3D.rotateOnAxis( axisX,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),2)==1)//Y
-							auxObjects3D.rotateOnAxis( axisY,0.1);
-						else if ( ConvertBase.bitPos(ConvertBase.dec2bin(auxObjects3D.lim_rot),3)==1)//Z
-							auxObjects3D.rotateOnAxis( axisZ,0.1);
+						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
+							{
+								auxObjects3D.rotateOnAxis( axisX,0.1);
+								line_tray.rotateOnAxis( axisX,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
+							{
+								auxObjects3D.rotateOnAxis( axisY,0.1);
+								line_tray.rotateOnAxis( axisY,0.1);
+							}
+						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
+							{
+								auxObjects3D.rotateOnAxis( axisZ,0.1);
+								line_tray.rotateOnAxis( axis,0.1);
+							}
 					  break;
 				  }
 			}
 			
 			//Volvemos a colocar a su posicion original con los cambios realizados
-			auxObjects3D.position=new THREE.Vector3(auxObjects3D.position.x+prev_pos.x, auxObjects3D.position.y+prev_pos.y, auxObjects3D.position.z+prev_pos.z);		
+			auxObjects3D.position=new THREE.Vector3(auxObjects3D.position.x+prev_pos.x, auxObjects3D.position.y+prev_pos.y, auxObjects3D.position.z+prev_pos.z);
+			line_tray.position=new THREE.Vector3(auxObjects3D.position.x+prev_pos_sel.x, auxObjects3D.position.y+prev_pos_sel.y, auxObjects3D.position.z+prev_pos_sel.z);
 			animate();
 		}
 	}
@@ -183,7 +259,7 @@ function MouseInput( e ) {
 			
 			LineGeometry.vertices.push(raycaster.ray.origin);
 			LineGeometry.vertices.push(obj.geometry.vertices[0]);
-			var line_tray = new THREE.Line(LineGeometry, LineMaterial);
+			line_tray = new THREE.Line(LineGeometry, LineMaterial);
 			scene.add(line_tray);
 		}
 		/////////////////////////////////

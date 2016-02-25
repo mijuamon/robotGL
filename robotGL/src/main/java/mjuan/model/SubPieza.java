@@ -31,7 +31,7 @@ public class SubPieza
 	int orden;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "CONF_ID")
 	Configuracion conf;
 	
 	

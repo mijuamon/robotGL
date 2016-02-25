@@ -62,7 +62,7 @@
     		gl_FragColor = vec4( glow, 1.0 );
 		}
 		</script>
-		
+<!-- ------------------------------------------------------------------- -->
 		<script src="js/input.js"></script>
 		<script src="js/webGL.js"></script>
 		
