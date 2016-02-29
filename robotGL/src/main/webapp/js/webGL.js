@@ -19,10 +19,15 @@ function init()
 	});
 	var LineGeometry = new THREE.Geometry();
 	
+	//Inicializamos Selected_line
 	LineGeometry.vertices.push(new THREE.Vector3(0, 10, 0));
 	selected_line = new THREE.Line(LineGeometry, LineMaterial);
 	
 	scene.add(selected_line);
+	
+	glow = new THREE.Mesh(new THREE.Geometry(),new THREE.LineBasicMaterial());
+	scene.add(glow);
+	
 	//Cargador de modelos JSON
 	loader = new THREE.JSONLoader();	
 	
@@ -59,7 +64,7 @@ function shaderTexture()
 			    uniforms: 
 				{ 
 					"c":   { type: "f", value: 1.0 },
-					"p":   { type: "f", value: 1.4 },
+					"p":   { type: "f", value: 4.0 },
 					glowColor: { type: "c", value: new THREE.Color(0xffff00) },
 					viewVector: { type: "v3", value: camera.position }
 				},
@@ -164,6 +169,12 @@ function setURL(url, conf)
 		//------------------------------------
 		obj3D.add(modelo);
 		//scene.add(modelo);
+		
+		var spritey = makeTextSprite( " " + auxnum + " ", { fontsize: 32, backgroundColor: {r:255, g:100, b:100, a:1} } );
+		spritey.position = modelo.position;
+		scene.add( spritey );
+		
+		auxnum++;
 				
 		objects.push(modelo);
 		actualObject3d.add(obj3D);//Añadimos el Object3D al arbol

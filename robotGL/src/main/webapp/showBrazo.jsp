@@ -26,16 +26,6 @@
 		%>
 		<div id='container' width=800, height=600>	
 		
-		<script src="lib/threejs/three.min.js"></script>
-		<script src="lib/threejs/OrbitControls.js"></script>
-		<script src="lib/threejs/dat.gui.min.js"></script>
-		<script src="lib/threejs/stats.min.js"></script>	
-		<script src="lib/threejs/Projector.js"></script>
-		<script src="lib/threejs/CanvasRenderer.js"></script>
-			
-		<script src="js/variables.js"></script>
-		<script src="js/baseConverter.js"></script>
-		
 <!-- ---------------- Custom Shader Code ------------------------ -->
 		<script id="vertexShader" type="x-shader/x-vertex">
 			uniform vec3 viewVector;
@@ -54,7 +44,7 @@
 		
 		<!-- fragment shader a.k.a. pixel shader -->
 		<script id="fragmentShader" type="x-shader/x-vertex"> 
-			uniform vec glowColor;
+			uniform vec3 glowColor;
 			varying float intensity;
 			void main() 
 		{
@@ -63,6 +53,18 @@
 		}
 		</script>
 <!-- ------------------------------------------------------------------- -->
+
+		
+		<script src="lib/threejs/three.min.js"></script>
+		<script src="lib/threejs/OrbitControls.js"></script>
+		<script src="lib/threejs/dat.gui.min.js"></script>
+		<script src="lib/threejs/stats.min.js"></script>	
+		<script src="lib/threejs/Projector.js"></script>
+		<script src="lib/threejs/CanvasRenderer.js"></script>
+		
+		<script src="js/TextSprite.js"></script>		
+		<script src="js/variables.js"></script>
+		<script src="js/baseConverter.js"></script>
 		<script src="js/input.js"></script>
 		<script src="js/webGL.js"></script>
 		

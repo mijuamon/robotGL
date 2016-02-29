@@ -28,10 +28,10 @@ function keyboardInput(event)
 			var axisZ= new THREE.Vector3(0,0,1); 
 			
 			var prev_pos=new THREE.Vector3(auxObjects3D.position);
-			var prev_pos_sel=new THREE.Vector3(line_tray.position);
+			var prev_pos_sel=new THREE.Vector3(glow.position);
 			
 			auxObjects3D.position=new THREE.Vector3(0,0,0);//Movemos a origen antes de hacer alguna transformacion
-			line_tray.position=new THREE.Vector3(0,0,0);
+			glow.position=new THREE.Vector3(0,0,0);
 			
 			if(auxObjects3D.lim_pos!=0 && auxObjects3D.lim_rot!=0)//Rotacion y desplazamiento
 			{
@@ -43,34 +43,34 @@ function keyboardInput(event)
 						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
 							{
 								auxObjects3D.translateOnAxis(axisX,-0.1);
-								line_tray.translateOnAxis(axisX,-0.1);
+								glow.translateOnAxis(axisX,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
 							{
 								auxObjects3D.translateOnAxis(axisY,-0.1);
-								line_tray.translateOnAxis(axisY,-0.1);
+								glow.translateOnAxis(axisY,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
 							{
 								auxObjects3D.translateOnAxis(axisZ,-0.1);
-								line_tray.translateOnAxis(axisZ,-0.1);
+								glow.translateOnAxis(axisZ,-0.1);
 							}
 					  break;	
 					case 68: // Right D -- increase
 						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
 							{
 								auxObjects3D.translateOnAxis(axisX,0.1);
-								line_tray.translateOnAxis(axisX,0.1);
+								glow.translateOnAxis(axisX,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
 							{
 								uxObjects3D.translateOnAxis(axisY,0.1);
-								line_tray.translateOnAxis(axisY,0.1);
+								glow.translateOnAxis(axisY,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
 							{
 								auxObjects3D.translateOnAxis(axisZ,0.1);
-								line_tray.translateOnAxis(axisZ,0.1);
+								glow.translateOnAxis(axisZ,0.1);
 							}
 					  break;
 					  
@@ -79,34 +79,34 @@ function keyboardInput(event)
 						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
 							{
 								auxObjects3D.rotateOnAxis(axisX,-0.1);
-								line_tray.rotateOnAxis(axisX,-0.1);
+								glow.rotateOnAxis(axisX,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
 							{
 								auxObjects3D.rotateOnAxis(axisY,-0.1);
-								line_tray.rotateOnAxis(axisY,-0.1);
+								glow.rotateOnAxis(axisY,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
 							{
 								auxObjects3D.rotateOnAxis(axisZ,-0.1);
-								line_tray.rotateOnAxis(axisZ,-0.1);
+								glow.rotateOnAxis(axisZ,-0.1);
 							}
 					  break;
 					case 83: // Down
 						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
 							{
 								auxObjects3D.rotateOnAxis(axisX,0.1);
-								line_tray.rotateOnAxis(axisX,0.1);
+								glow.rotateOnAxis(axisX,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
 							{
 								auxObjects3D.rotateOnAxis(axisY,0.1);
-								line_tray.rotateOnAxis(axisY,0.1);
+								glow.rotateOnAxis(axisY,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
 							{
 								auxObjects3D.rotateOnAxis(axisZ,0.1);
-								line_tray.rotateOnAxis(axisZ,0.1);
+								glow.rotateOnAxis(axisZ,0.1);
 							}
 					  break;
 				  }
@@ -121,17 +121,17 @@ function keyboardInput(event)
 						if ( ConvertBase.bitPos(auxObjects3D.lim_pos,2)==1)//X
 							{
 								auxObjects3D.translateOnAxis(axisX,-0.1);
-								line_tray.translateOnAxis(axisX,-0.1);
+								glow.translateOnAxis(axisX,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
 							{
 								auxObjects3D.translateOnAxis(axisY,-0.1);
-								line_tray.translateOnAxis(axisY,-0.1);
+								glow.translateOnAxis(axisY,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
 							{
 								auxObjects3D.translateOnAxis(axisZ,-0.1);
-								line_tray.translateOnAxis(axisZ,-0.1);
+								glow.translateOnAxis(axisZ,-0.1);
 							}
 					  break;	
 					case 68: // Right D -- increase
@@ -139,17 +139,17 @@ function keyboardInput(event)
 							
 							{
 								auxObjects3D.translateOnAxis(axisX,0.1);
-								line_tray.translateOnAxis(axisX,0.1);
+								glow.translateOnAxis(axisX,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,1)==1)//Y
 							{
 								auxObjects3D.translateOnAxis(axisY,0.1);
-								line_tray.translateOnAxis(axisY,0.1);
+								glow.translateOnAxis(axisY,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_pos,0)==1)//Z
 							{
 								auxObjects3D.translateOnAxis(axisZ,0.1);
-								line_tray.translateOnAxis(axisZ,0.1);
+								glow.translateOnAxis(axisZ,0.1);
 							}
 					  break;
 				  }
@@ -163,34 +163,34 @@ function keyboardInput(event)
 						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
 							{
 								auxObjects3D.rotateOnAxis(axisX,-0.1);
-								line_tray.rotateOnAxis(axisX,-0.1);
+								glow.rotateOnAxis(axisX,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
 							{
 								auxObjects3D.rotateOnAxis(axisY,-0.1);
-								line_tray.rotateOnAxis(axisY,-0.1);
+								glow.rotateOnAxis(axisY,-0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
 							{
 								auxObjects3D.rotateOnAxis( axisZ,-0.1);
-								line_tray.rotateOnAxis(axisZ,-0.1);
+								glow.rotateOnAxis(axisZ,-0.1);
 							}
 					  break;
 					case 83: // Down
 						if ( ConvertBase.bitPos(auxObjects3D.lim_rot,2)==1)//X
 							{
 								auxObjects3D.rotateOnAxis(axisX,0.1);
-								line_tray.rotateOnAxis(axisX,0.1);
+								glow.rotateOnAxis(axisX,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,1)==1)//Y
 							{
 								auxObjects3D.rotateOnAxis(axisY,0.1);
-								line_tray.rotateOnAxis(axisY,0.1);
+								glow.rotateOnAxis(axisY,0.1);
 							}
 						else if ( ConvertBase.bitPos(auxObjects3D.lim_rot,0)==1)//Z
 							{
 								auxObjects3D.rotateOnAxis(axisZ,0.1);
-								line_tray.rotateOnAxis(axisZ,0.1);
+								glow.rotateOnAxis(axisZ,0.1);
 							}
 					  break;
 				  }
@@ -198,7 +198,7 @@ function keyboardInput(event)
 			
 			//Volvemos a colocar a su posicion original con los cambios realizados
 			auxObjects3D.position=new THREE.Vector3(auxObjects3D.position.x+prev_pos.x, auxObjects3D.position.y+prev_pos.y, auxObjects3D.position.z+prev_pos.z);
-			line_tray.position=new THREE.Vector3(auxObjects3D.position.x+prev_pos_sel.x, auxObjects3D.position.y+prev_pos_sel.y, auxObjects3D.position.z+prev_pos_sel.z);
+			glow.position=new THREE.Vector3(auxObjects3D.position.x+prev_pos_sel.x, auxObjects3D.position.y+prev_pos_sel.y, auxObjects3D.position.z+prev_pos_sel.z);
 			animate();
 		}
 	}
@@ -267,7 +267,7 @@ function MouseInput( e ) {
 	
 
 			
-			
+			scene.remove(glow);
 			
 			var geometry = obj.geometry.clone();		
 			
@@ -275,8 +275,11 @@ function MouseInput( e ) {
 			
 			glow.position = obj.position;
 			glow.scale.multiplyScalar(1.05);
-			scene.add( glow );
-			selected_line=glow;
+			
+			
+			
+			scene.add(glow);
+			
 			
 			//Malla alrededor del objeto seleccionado
 			/*

@@ -49,3 +49,7 @@ var line_tray;
 //material
 var customMaterial;
 var glow;
+
+//////////////////
+
+var auxnum=0;
