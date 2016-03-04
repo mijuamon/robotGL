@@ -19,145 +19,222 @@ public class Configuracion
 	@Column(name="CONF_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")  
 	@SequenceGenerator(name = "generator", sequenceName = "CON_SEQ", allocationSize=1) 
-	private int id;
+	private double id;
 	
 	@Column(name="ROT_X")
-	private int rot_x;
+	private double rot_x;
 	
 	@Column(name="ROT_Y")
-	private int rot_y;
+	private double rot_y;
 	
 	@Column(name="ROT_Z")
-	private int rot_z;
+	private double rot_z;
 	
 	@Column(name="ESC_X")
-	private int esc_x;
+	private double esc_x;
 	
 	@Column(name="ESC_Y")
-	private int esc_y;
+	private double esc_y;
 	
 	@Column(name="ESC_Z")
-	private int esc_z;
+	private double esc_z;
 	
 	@Column(name="LIMIT_ROT")
-	private int limit_rot;
+	private double limit_rot;
 	
 	@Column(name="LIMIT_POS")
-	private int limit_pos;
+	private double limit_pos;
 	
 	@Column(name="POS_X")
-	private int pos_x;
+	private double pos_x;
 	
 	@Column(name="POS_Y")
-	private int pos_y;
+	private double pos_y;
 	
 	@Column(name="POS_Z")
-	private int pos_z;
+	private double pos_z;
+	
+	@Column(name="NOMBRE")
+	private String nombre;
+	
+	@Column(name="UNION_T_X")
+	private double union_t_x;
+
+	@Column(name="UNION_T_Y")
+	private double union_t_y;
+
+	@Column(name="UNION_T_Z")
+	private double union_t_z;
+
+	@Column(name="UNION_R_X")
+	private double union_r_x;
+
+	@Column(name="UNION_R_Y")
+	private double union_r_y;
+
+	@Column(name="UNION_R_Z")
+	private double union_r_z;
 		
-	public int getPos_x() {
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getUnion_t_x() {
+		return union_t_x;
+	}
+
+	public void setUnion_t_x(double union_t_x) {
+		this.union_t_x = union_t_x;
+	}
+
+	public double getUnion_t_y() {
+		return union_t_y;
+	}
+
+	public void setUnion_t_y(double union_t_y) {
+		this.union_t_y = union_t_y;
+	}
+
+	public double getUnion_t_z() {
+		return union_t_z;
+	}
+
+	public void setUnion_t_z(double union_t_z) {
+		this.union_t_z = union_t_z;
+	}
+
+	public double getUnion_r_x() {
+		return union_r_x;
+	}
+
+	public void setUnion_r_x(double union_r_x) {
+		this.union_r_x = union_r_x;
+	}
+
+	public double getUnion_r_y() {
+		return union_r_y;
+	}
+
+	public void setUnion_r_y(double union_r_y) {
+		this.union_r_y = union_r_y;
+	}
+
+	public double getUnion_r_z() {
+		return union_r_z;
+	}
+
+	public void setUnion_r_z(double union_r_z) {
+		this.union_r_z = union_r_z;
+	}
+
+	public double getPos_x() {
 		return pos_x;
 	}
 
-	public void setPos_x(int pos_x) {
+	public void setPos_x(double pos_x) {
 		this.pos_x = pos_x;
 	}
 
-	public int getPos_y() {
+	public double getPos_y() {
 		return pos_y;
 	}
 
-	public void setPos_y(int pos_y) {
+	public void setPos_y(double pos_y) {
 		this.pos_y = pos_y;
 	}
 
-	public int getPos_z() {
+	public double getPos_z() {
 		return pos_z;
 	}
 
-	public void setPos_z(int pos_z) {
+	public void setPos_z(double pos_z) {
 		this.pos_z = pos_z;
 	}
 	
-	public int getId() {
+	public double getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(double id) {
 		this.id = id;
 	}
 
-	public int getRot_x() {
+	public double getRot_x() {
 		return rot_x;
 	}
 
-	public void setRot_x(int rot_x) {
+	public void setRot_x(double rot_x) {
 		this.rot_x = rot_x;
 	}
 
-	public int getRot_y() {
+	public double getRot_y() {
 		return rot_y;
 	}
 
-	public void setRot_y(int rot_y) {
+	public void setRot_y(double rot_y) {
 		this.rot_y = rot_y;
 	}
 
-	public int getRot_z() {
+	public double getRot_z() {
 		return rot_z;
 	}
 
-	public void setRot_z(int rot_z) {
+	public void setRot_z(double rot_z) {
 		this.rot_z = rot_z;
 	}
 
-	public int getEsc_x() {
+	public double getEsc_x() {
 		return esc_x;
 	}
 
-	public void setEsc_x(int esc_x) {
+	public void setEsc_x(double esc_x) {
 		this.esc_x = esc_x;
 	}
 
-	public int getEsc_y() {
+	public double getEsc_y() {
 		return esc_y;
 	}
 
-	public void setEsc_y(int esc_y) {
+	public void setEsc_y(double esc_y) {
 		this.esc_y = esc_y;
 	}
 
-	public int getEsc_z() {
+	public double getEsc_z() {
 		return esc_z;
 	}
 
-	public void setEsc_z(int esc_z) {
+	public void setEsc_z(double esc_z) {
 		this.esc_z = esc_z;
 	}
 
-	public int getLimit_rot() {
+	public double getLimit_rot() {
 		return limit_rot;
 	}
 
-	public void setLimit_rot(int limit_rot) {
+	public void setLimit_rot(double limit_rot) {
 		this.limit_rot = limit_rot;
 	}
 
-	public int getLimit_pos() {
+	public double getLimit_pos() {
 		return limit_pos;
 	}
 
-	public void setLimit_pos(int limit_pos) {
+	public void setLimit_pos(double limit_pos) {
 		this.limit_pos = limit_pos;
 	}
 
 	public String toString() 
 	{
-		// TODO Auto-generated method stub	
 		String txt="";
 		txt="\"pos:"+getPos_x()+","+getPos_y()+","+getPos_z()+";";
 		txt=txt+"rot:"+getRot_x()+","+getRot_y()+","+getRot_z()+";";
 		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+";";
 		txt=txt+"lim:"+getLimit_pos()+","+getLimit_rot()+";\"";
+		txt=txt+"union_T:"+getUnion_t_x()+","+getUnion_t_y()+","+getUnion_t_z()+";";
 		
 		return txt;
 	}

@@ -1,2 +1,5 @@
 * Hace falta cambiar el modelo de la base ya que tiene anclado la base
-* hacer que la seleccion de un objeto tenga un efecto glow (http://stemkoski.github.io/Three.js/Shader-Glow.html)
+* Arreglar el sistema de rotacion añadiendo el sistema de punto de unions
+
+
+
