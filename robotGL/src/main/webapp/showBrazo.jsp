@@ -73,9 +73,12 @@
 				Brazo brazo = brazoDAO.getBrazo(id);
 				
 				List<Pieza> piezas = brazo.getPiezas();
-				
-				int i=piezas.size()-1;
-				while(i>=0)
+				int aux=0;
+				%>
+				startVector(<%=piezas.size()*3%>);
+				<%
+				int i=0;
+				while(i<piezas.size())
 				{
 					String url=piezas.get(i).getUrl();
 					String tipo=piezas.get(i).getTipo_fk().getNombre();
@@ -89,13 +92,14 @@
 						setURL(<%="\""+url+"/"+tipo+"/"+tipo+n+".json\""%>,<%=conf%>);
 						<%
 						u++;
+						aux++;
 					}
-					i--;
+					i++;
 				}
 			%>			
  		</script>
  		<script type="text/javascript">
- 		startScene();
+ 		startScene(<%=aux%>);
  		</script>
 		
 	</body>

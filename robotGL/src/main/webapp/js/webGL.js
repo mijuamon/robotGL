@@ -135,56 +135,97 @@ function animate() {
 
 function setURL(url, conf)
 {	
+	var currentOrder=objectCount;
+	objectCount+=1;
+	
+	var modelo = new THREE.Mesh();
+	modelo.index=currentOrder;
+	objectsArray[currentOrder]=modelo;
+	
+	if(conf!="")
+	{			
+		var txt=conf.split(';');
+		var pos=txt[0].split(':')[1].split(',');
+		var rot=txt[1].split(':')[1].split(',');			
+		var sca=txt[2].split(':')[1].split(',');
+		
+		modelo.lim_pos=txt[3].split(':')[1].split(',')[0];
+		modelo.lim_rot=txt[3].split(':')[1].split(',')[1];
+	}
+	else
+	{
+		var pos=new Vector3(0,0,0);
+		var rot=new Vector3(0,0,0);
+		var sca=new Vector3(1,1,1);
+	}
+	
 	loader.load(url, function(geometry,materials)
 	{
 		//Cargamos el modelo
-		modelo = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+		modelo.material=new THREE.MeshFaceMaterial(materials);
+		modelo.geometry=geometry;
+		
+		modelo.url=url;
 		//modelo.geometry.computeTangents();
-		var obj3D = new THREE.Object3D();
+		//var obj3D = new THREE.Object3D();
 		//Cargamos el archivo de configuracion del modelo
 		//------------------------------------		
-		if(conf!="")
-		{			
-			var txt=conf.split(';');
-			var pos=txt[0].split(':')[1].split(',');
-			var rot=txt[1].split(':')[1].split(',');			
-			var sca=txt[2].split(':')[1].split(',');
+		
 			
 			//Metemos las limitacionjes y el indice
-			obj3D.lim_pos=txt[3].split(':')[1].split(',')[0];
+			/*obj3D.lim_pos=txt[3].split(':')[1].split(',')[0];
 			obj3D.lim_rot=txt[3].split(':')[1].split(',')[1];				
-			obj3D.index=indice;
+			obj3D.index=indice;*/
+			
 			/*Necesario que lo tenga tambien el objeto para que cuando el raycaster detecte este objeto, sepa hasta que nivel
 			del arbol debe de llegar para estar en el object3D correcto, para que el resto de arbol se mueva a la vez que
 			se mueve el objeto seleccionado.*/
-			modelo.index=indice;
 			
 			
-			indice =indice+1;
 			
-			modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
-			modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
 			
-		}
+			
+		modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
+		modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
+			
+				
 		//------------------------------------
-		obj3D.add(modelo);
+		/*obj3D.add(modelo);
 		//scene.add(modelo);
 		
 		var spritey = makeTextSprite( " " + auxnum + " ", { fontsize: 32, backgroundColor: {r:255, g:100, b:100, a:1} } );
 		spritey.position = modelo.position;
 		scene.add( spritey );
-		
+		console.log(url);
 		auxnum++;
 				
 		objects.push(modelo);
 		actualObject3d.add(obj3D);//Añadimos el Object3D al arbol
-		actualObject3d=obj3D;
+		actualObject3d=obj3D;*/
 		//actualObject=obj3D;
 	});	
 }
-
-function startScene()
+function startVector(aux)
 {
+	objectsArray = new Array(aux);
+}
+function startScene(aux)
+{
+	while(objectCount<aux){}
+	for(i=0;i<aux;i++)
+	{
+		var obj=objectsArray[i];
+		var obj3D = new THREE.Object3D();
+		obj3D.index=obj.index
+		obj3D.lim_pos=obj.lim_pos;
+		obj3D.lim_rot=obj.lim_rot;	
+		obj3D.add(obj);	
+		objects.push(obj);
+		actualObject3d.add(obj3D);
+		actualObject3d=obj3D;
+	}
+	
+	
 	scene.add(brazo);
 }
 

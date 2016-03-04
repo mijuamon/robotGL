@@ -25,11 +25,6 @@ var mouseVector = new THREE.Vector2();
 var selected_line;
 var currentObject;
 
-//Usado para guardar el orden en que se guarada en el arbol.
-//Cada object3D tendra la variable indice con el mismo valor que el objeto
-//que tiene.
-var indice=0;
-
 //Guardamos el indice del objeto seleccionado
 var actualObject;
 
@@ -51,5 +46,9 @@ var customMaterial;
 var glow;
 
 //////////////////
+
+var objectCount = 0;
+var objectsArray;
+
 
 var auxnum=0;
