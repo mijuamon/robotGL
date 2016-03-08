@@ -25,13 +25,14 @@ function init()
 	
 	scene.add(selected_line);
 	
+	
 	glow = new THREE.Mesh(new THREE.Geometry(),new THREE.LineBasicMaterial());
 	scene.add(glow);
 	
 	//Cargador de modelos JSON
 	loader = new THREE.JSONLoader();	
 	
-	var PI2 = Math.PI * 2;
+	/*var PI2 = Math.PI * 2;
 	var particleMaterial = new THREE.SpriteCanvasMaterial( {
 
 		color: 0x000000,
@@ -41,7 +42,7 @@ function init()
 			context.arc( 0, 0, 0.5, 0, PI2, true );
 			context.fill();
 
-		}});
+		}});*/
 	
 	//Eventos
 	window.addEventListener('resize',updateAspectRatio);
@@ -57,6 +58,7 @@ function init()
 	shaderTexture();
 	renderer.render(scene, camera);
 }
+//Textura del shadere de glow
 function shaderTexture()
 {
 	customMaterial = new THREE.ShaderMaterial( 
@@ -88,8 +90,7 @@ function animate() {
 
 //Creacion y inicializacion de controles
 function controls()
-{
-	
+{	
 	//Movimiento de la camara con el raton
 	cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
 	cameraControls.target.set(0,0,0);
@@ -105,7 +106,7 @@ function camera()
 	
 }
 
-//CREACION DE LUCES
+//Creación de luces
 function lights()
 {
 	//Luz ambiental
@@ -127,12 +128,8 @@ function updateAspectRatio()
 	
 	camera.updateProjectionMatrix();
 }
-function animate() {
 
-    requestAnimationFrame( animate );
-    renderer.render( scene, camera );
-}
-
+//Cargamos a traves de la url recibida el modelo JSON
 function setURL(url, conf)
 {	
 	var currentOrder=objectCount;
@@ -163,52 +160,30 @@ function setURL(url, conf)
 	{
 		//Cargamos el modelo
 		modelo.material=new THREE.MeshFaceMaterial(materials);
-		modelo.geometry=geometry;
-		
+		modelo.geometry=geometry;		
 		modelo.url=url;
-		//modelo.geometry.computeTangents();
-		//var obj3D = new THREE.Object3D();
-		//Cargamos el archivo de configuracion del modelo
-		//------------------------------------		
 		
-			
-			//Metemos las limitacionjes y el indice
-			/*obj3D.lim_pos=txt[3].split(':')[1].split(',')[0];
-			obj3D.lim_rot=txt[3].split(':')[1].split(',')[1];				
-			obj3D.index=indice;*/
-			
-			/*Necesario que lo tenga tambien el objeto para que cuando el raycaster detecte este objeto, sepa hasta que nivel
-			del arbol debe de llegar para estar en el object3D correcto, para que el resto de arbol se mueva a la vez que
-			se mueve el objeto seleccionado.*/
-			
-			
-			
-			
-			
+		//Guardamos la configuracion inicial en el propio modelo
+		//El punto de anclaje de la pieza no tiene por que ser el mismo que el centro del objeto.
+		//Por eso es necesario guardar su posicion inicial ya que cuando se aplique una traslaccion o rotacion
+		//en este modelo, se debe de recolocar conforme a la rotación.
+		modelo.pos=pos;
+		modelo.rot=rot;
+		modelo.sca=sca;
+		
+		//Colocamos la pieza en su lugar correspondiente
 		modelo.position.set(parseInt(pos[0]),parseInt(pos[1]),parseInt(pos[2]));
 		modelo.scale.set(parseInt(sca[0]),parseInt(sca[1]),parseInt(sca[2]));
 			
-				
-		//------------------------------------
-		/*obj3D.add(modelo);
-		//scene.add(modelo);
-		
-		var spritey = makeTextSprite( " " + auxnum + " ", { fontsize: 32, backgroundColor: {r:255, g:100, b:100, a:1} } );
-		spritey.position = modelo.position;
-		scene.add( spritey );
-		console.log(url);
-		auxnum++;
-				
-		objects.push(modelo);
-		actualObject3d.add(obj3D);//Añadimos el Object3D al arbol
-		actualObject3d=obj3D;*/
-		//actualObject=obj3D;
 	});	
 }
+//Inicializaremos el vector que contendra los modelos antes de montar el arbol de objetos
 function startVector(aux)
 {
 	objectsArray = new Array(aux);
 }
+
+//Iniciamos la escena
 function startScene(aux)
 {
 	while(objectCount<aux){}
