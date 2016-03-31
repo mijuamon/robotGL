@@ -233,9 +233,9 @@ public class Configuracion
 		txt="\"pos:"+getPos_x()+","+getPos_y()+","+getPos_z()+";";
 		txt=txt+"rot:"+getRot_x()+","+getRot_y()+","+getRot_z()+";";
 		txt=txt+"sca:"+getEsc_x()+","+getEsc_y()+","+getEsc_z()+";";
-		txt=txt+"lim:"+getLimit_pos()+","+getLimit_rot()+";\"";
+		txt=txt+"lim:"+getLimit_pos()+","+getLimit_rot()+";";
 		txt=txt+"union_T:"+getUnion_t_x()+","+getUnion_t_y()+","+getUnion_t_z()+";";
-		
+		txt=txt+"union_R:"+getUnion_r_x()+","+getUnion_r_y()+","+getUnion_r_z()+";\"";
 		return txt;
 	}
 }
