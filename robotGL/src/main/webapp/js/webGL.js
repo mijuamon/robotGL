@@ -151,9 +151,9 @@ function setURL(url, conf)
 	}
 	else
 	{
-		var pos=new Vector3(0,0,0);
-		var rot=new Vector3(0,0,0);
-		var sca=new Vector3(1,1,1);
+		var pos=new THREE.Vector3(0,0,0);
+		var rot=new THREE.Vector3(0,0,0);
+		var sca=new THREE.Vector3(1,1,1);
 	}
 	
 	loader.load(url, function(geometry,materials)

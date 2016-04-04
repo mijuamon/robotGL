@@ -55,6 +55,7 @@
 			
 		
 	</script>
+	<a href="./test.html">TEST</a>
 
 </body>
 </html>

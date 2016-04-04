@@ -1,0 +1,57 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<div id='container' width=800, height=600>	
+				<!-- ---------------- Custom Shader Code ------------------------ -->
+		<script id="vertexShader" type="x-shader/x-vertex">
+			uniform vec3 viewVector;
+			uniform float c;
+			uniform float p;
+			varying float intensity;
+			void main() 
+			{
+   				vec3 vNormal = normalize( normalMatrix * normal );
+				vec3 vNormel = normalize( normalMatrix * viewVector );
+				intensity = pow( c - dot(vNormal, vNormel), p );
+	
+    			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+		</script>
+		
+		<!-- fragment shader a.k.a. pixel shader -->
+		<script id="fragmentShader" type="x-shader/x-vertex"> 
+			uniform vec3 glowColor;
+			varying float intensity;
+			void main() 
+		{
+			vec3 glow = glowColor * intensity;
+    		gl_FragColor = vec4( glow, 1.0 );
+		}
+		</script>
+<!-- ------------------------------------------------------------------- -->
+		<script src="lib/threejs/three.min.js"></script>
+		<script src="lib/threejs/OrbitControls.js"></script>
+		<script src="lib/threejs/dat.gui.min.js"></script>
+		<script src="lib/threejs/stats.min.js"></script>	
+		<script src="lib/threejs/Projector.js"></script>
+		<script src="lib/threejs/CanvasRenderer.js"></script>
+		
+		<script src="js/TextSprite.js"></script>		
+		<script src="js/variables.js"></script>
+		<script src="js/baseConverter.js"></script>
+		<script src="js/input.js"></script>
+		<script src="js/webGL.js"></script>
+		
+		
+
+		
+		<script type="text/javascript">
+			startVector(1);
+			setURL("./models/test.json","")
+		</script>
+		<script type="text/javascript">
+			startScene(1);
+ 		</script>
+	</body>
+</html>
