@@ -11,7 +11,7 @@ function init()
 	scene =new THREE.Scene();	
 	
 	//Grid de apoyo	
-	//scene.add(new THREE.GridHelper(20,1));
+	scene.add(new THREE.GridHelper(20,1));
 	
 	//Inicializamos el objeto LINE usado para dibujar una polilinea alrededor del objeto seleccionado
 	LineMaterial = new THREE.LineBasicMaterial({
@@ -78,15 +78,11 @@ function shaderTexture()
 			}   );
 }
 
-
-
 function animate() {
 	requestAnimationFrame( animate );
 	cameraControls.update();
 	renderer.render( scene, camera );
 }
-
-
 
 //Creacion y inicializacion de controles
 function controls()
@@ -139,22 +135,25 @@ function setURL(url, conf)
 	modelo.index=currentOrder;
 	objectsArray[currentOrder]=modelo;
 	
-	if(conf!="")
+	if(conf=="" || conf==" ")
 	{			
+		var pos=[0.0,0.0,0.0];
+		var rot=[0.0,0.0,0.0];
+		var sca=[1.0,1.0,1.0];
+		var lim_pos = 0.0;
+		var lim_rot = 0.0;
+	}
+	else
+	{
 		var txt=conf.split(';');
 		var pos=txt[0].split(':')[1].split(',');
 		var rot=txt[1].split(':')[1].split(',');			
 		var sca=txt[2].split(':')[1].split(',');
-		
-		modelo.lim_pos=txt[3].split(':')[1].split(',')[0];
-		modelo.lim_rot=txt[3].split(':')[1].split(',')[1];
+		var lim_pos=txt[3].split(':')[1].split(',')[0];
+		var lim_rot=txt[3].split(':')[1].split(',')[1];
 	}
-	else
-	{
-		var pos=new THREE.Vector3(0,0,0);
-		var rot=new THREE.Vector3(0,0,0);
-		var sca=new THREE.Vector3(1,1,1);
-	}
+	modelo.lim_pos=lim_pos;
+	modelo.lim_rot=lim_rot;
 	
 	loader.load(url, function(geometry,materials)
 	{
